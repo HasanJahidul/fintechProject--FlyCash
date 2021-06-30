@@ -14,50 +14,54 @@ use Illuminate\Support\Facades\Route;
 */
 
 Route::get('/', function () {
-    return view('welcome') ;
-})->name('welcome');
+    return view('welcome');
+});
+
+Auth::routes();
+
+Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
+Auth::routes();
+
+Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('auth');
+
+Route::group(['middleware' => 'auth'], function () {
+		Route::get('adduser', ['as' => 'pages.admin.user.adduser', 'uses' => 'App\Http\Controllers\UserController@adduser']);
+		Route::get('edituser', ['as' => 'pages.admin.user.edituser', 'uses' => 'App\Http\Controllers\UserController@edituser']);
+		Route::get('transaction', ['as' => 'pages.admin.user.transaction', 'uses' => 'App\Http\Controllers\UserController@transaction']);
+		Route::get('discount', ['as' => 'pages.admin.user.discount', 'uses' => 'App\Http\Controllers\UserController@discount']);
+		Route::get('blockuser', ['as' => 'pages.admin.user.blockuser', 'uses' => 'App\Http\Controllers\UserController@blockuser']);
+
+		Route::get('addagent', ['as' => 'pages.admin.agent.addagent', 'uses' => 'App\Http\Controllers\AgentController@addagent']);
+		Route::get('editagent', ['as' => 'pages.admin.agent.editagent', 'uses' => 'App\Http\Controllers\AgentController@editagent']);
+		Route::get('agenttransaction', ['as' => 'pages.admin.agent.agenttransaction', 'uses' => 'App\Http\Controllers\AgentController@agenttransaction']);
+		Route::get('addagentmoney', ['as' => 'pages.admin.agent.addagentmoney', 'uses' => 'App\Http\Controllers\AgentController@addagentmoney']);
+		Route::get('blockagent', ['as' => 'pages.admin.agent.blockagent', 'uses' => 'App\Http\Controllers\AgentController@blockagent']);
+		Route::get('chatagent', ['as' => 'pages.admin.agent.chatagent', 'uses' => 'App\Http\Controllers\AgentController@chatagent']);
 
 
+		Route::get('addofficer', ['as' => 'pages.admin.officer.addofficer', 'uses' => 'App\Http\Controllers\OfficerController@addofficer']);
+		Route::get('editofficer', ['as' => 'pages.admin.officer.editofficer', 'uses' => 'App\Http\Controllers\OfficerController@editofficer']);
+		Route::get('chatofficer', ['as' => 'pages.admin.officer.chatofficer', 'uses' => 'App\Http\Controllers\OfficerController@chatofficer']);
 
-//Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
-//Route::get('/addmoney', [App\Http\Controllers\TransactionController::class, 'addmoney'])->name('addmoney');
+		Route::get('addcampaign', ['as' => 'pages.admin.campaign.addcampaign', 'uses' => 'App\Http\Controllers\CampaignController@addcampaign']);
+		Route::get('ongoingcampaign', ['as' => 'pages.admin.campaign.ongoingcampaign', 'uses' => 'App\Http\Controllers\CampaignController@ongoingcampaign']);
+		Route::get('removecampaign', ['as' => 'pages.admin.campaign.removecampaign', 'uses' => 'App\Http\Controllers\CampaignController@removecampaign']);
 
 
-
-Route::get('/home', 'App\Http\Controllers\HomeController@index')->name('home')->middleware('checkSession');
-Route::get('/logout','App\Http\Controllers\LogoutController@logout');
-
-Route::group(['middleware' => 'checkSession'], function () {
-	
-		Route::get('/addmoney', ['uses' => 'App\Http\Controllers\TransactionController@addmoney'])->name('customer_addmoney');
-		Route::get('/sendmoney', [ 'uses' => 'App\Http\Controllers\TransactionController@sendmoney'])->name('customer_sendmoney');
-		Route::get('/cashout', [ 'uses' => 'App\Http\Controllers\TransactionController@cashout'])->name('customer_cashout');
-		Route::get('/paybill', [ 'uses' => 'App\Http\Controllers\TransactionController@paybill'])->name('customer_paybill');
-		Route::get('/recharge', [ 'uses' => 'App\Http\Controllers\TransactionController@recharge'])->name('customer_recharge');
-		Route::get('/transfer-money', [ 'uses' => 'App\Http\Controllers\TransactionController@transfermoney'])->name('customer_transfermoney');
-	
-	
-	
-		
+		Route::get('sendmoney', ['as' => 'pages.sendmoney', 'uses' => 'App\Http\Controllers\transactionController@sendmoney']);
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
 		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
 		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
 		Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'App\Http\Controllers\PageController@rtl']);
-		Route::get('transactionlist', ['as' => 'pages.transactionlist', 'uses' => 'App\Http\Controllers\PageController@transactionlist']);
+		Route::get('tables', ['as' => 'pages.tables', 'uses' => 'App\Http\Controllers\PageController@tables']);
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
-		Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
+});
+
+Route::group(['middleware' => 'auth'], function () {
+	Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
 	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-
-Route::group(['middleware' => 'guest'], function () {
-Route::get('/login', ['uses'=> 'App\Http\Controllers\LoginController@login'])->name('login');
-Route::post('/login', ['uses'=> 'App\Http\Controllers\LoginController@verify']);
-Route::get('/register', ['uses'=> 'App\Http\Controllers\RegisterController@register'])->name('register.index');
-Route::post('/register', ['uses'=> 'App\Http\Controllers\RegisterController@insert'])->name('register.insert');
-Route::get('/forgotpassword', ['uses'=> 'App\Http\Controllers\ForgotPasswordController@login'])->name('password.request');
-});	
-
 

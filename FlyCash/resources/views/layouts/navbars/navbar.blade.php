@@ -1,7 +1,7 @@
-
-@if (session()->has('email') )
+@auth()
     @include('layouts.navbars.navs.auth')
+@endauth
 
-@else
+@guest()
     @include('layouts.navbars.navs.guest')
-@endif
+@endguest
