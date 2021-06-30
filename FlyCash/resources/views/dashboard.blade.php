@@ -1,15 +1,14 @@
 @extends('layouts.app', ['pageSlug' => 'dashboard'])
 
 @section('content')
-@csrf
     <div class="row">
         <div class="col-12">
             <div class="card card-chart">
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-sm-6 text-left">
-                            <h2 class="card-title">Hello {{session('name')}}</h2>
-                            <h4 class="card-title">Balance : {{session('balance')}}</h4>
+                            <h2 class="card-title">DASHBOARD</h2>
+                            <h4 class="card-title">Balance :</h4>
                         </div>
                     </div>
                 </div>
@@ -17,15 +16,10 @@
         </div>
     </div>
 
-<div class="row">
+    <div class="row">
         <div class="col-12">
         <div class="card card-chart">
         <div class="card-header ">
-        <div class="row">
-                        <div class="col-sm-6 text-left">
-                            <h2 class="card-title">Campaigns</h2>
-                        </div>
-                    </div>
         <div class="card-body all-icons">
         <div class="row">
 
@@ -33,10 +27,10 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('customer_addmoney') }}">
-                        <img src="{{ asset('black') }}/img/icons/cashin.png">
+                        <a href="{{ route('pages.agent.transaction.cashin') }}">
+                        <img src="{{ asset('black') }}/img/takain.png">
                         <div class="picname">
-                        <h4>Add Money</h4>
+                        <h4>Cash In</h4>
                         </div>
                         </a>
                     </div>
@@ -47,20 +41,137 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('customer_sendmoney') }}">
-                        <img src="{{ asset('black') }}/img/icons/sendmoney.png">
+                    <a href="{{ route('pages.agent.transaction.cashout') }}">
+                    <img src="{{ asset('black') }}/img/takaout.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Cash Out</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                    <a href="{{ route('pages.agent.adduser') }}">
+                        <img src="{{ asset('black') }}/img/adduser.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Add User</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                    <a href="{{ route('pages.agent.transaction.requestmoney') }}">
+                    <img src="{{ asset('black') }}/img/reqMoney.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Request Money</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                    <a href="{{ route('pages.agent.transaction.paybill') }}">
+                    <img src="{{ asset('black') }}/img/paybill.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Pay Bill</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                        <a href="{{ route('pages.agent.transactionlist') }}">
+                        <img src="{{ asset('black') }}/img/transaction.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Transaction List</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                    <a href="{{ route('pages.agent.transaction.recharge') }}">
+                    <img src="{{ asset('black') }}/img/recharge.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Mobile Recharge</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                        <a href="#"><img src="{{ asset('black') }}/img/comingsoon.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Upcoming Feature</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                        <a href="#"><img src="{{ asset('black') }}/img/comingsoon.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Upcoming Feature</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                        <a href="#"><img src="{{ asset('black') }}/img/comingsoon.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Upcoming Feature</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                        <a href="#"><img src="{{ asset('black') }}/img/comingsoon.png" alt="{{ __('Profile Photo') }}">
+                        <h4>Upcoming Feature</h4>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
+            <div class="font-icon-detail">
+                <div class="d-flex justify-content-center">
+                    <div class="pic">
+                        <a href="#"><img src="{{ asset('black') }}/img/comingsoon.png" alt="{{ __('Profile Photo') }}">
                         <div class="picname">
-                        <h4>Send Money</h4>
+                        <h4>Upcoming Feature</h4>
                         </div>
                         </a>
                     </div>
                 </div>
             </div>
         </div>
-        
-    
-    
-
+            
+            
+                </div>
+            </div>
+        </div>
+    </div>
 @endsection
 
 @push('js')

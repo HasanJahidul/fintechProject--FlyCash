@@ -5,17 +5,16 @@
         <h3 class="mb-5">Log in to see how you can speed up your web development with out of the box CRUD for #User Management and more.</h3>
     </div> -->
     <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-        <!-- <form class="form" method="post" action="{{ route('login') }}"> -->
-        <form class="form" method="post" >
+        <form class="form" method="post" action="{{ route('login') }}">
             @csrf
 
             <div class="card card-login card-white">
                 <div class="card-header">
-                <img src="{{ asset('black') }}/img/flycash.png" alt="">
-                    <h1 align="center" class="card-title">{{ __('Log in') }}</h1>
+                    <img src="{{ asset('black') }}/img/card-primary.png" alt="">
+                    <h1 class="card-title">{{ __('Log in') }}</h1>
                 </div>
                 <div class="card-body">
-                    <!-- <p class="text-dark mb-2">Sign in with <strong>admin@black.com</strong> and the password <strong>secret</strong></p> -->
+                    <p class="text-dark mb-2">Sign in with <strong>admin@black.com</strong> and the password <strong>secret</strong></p>
                     <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                         <div class="input-group-prepend">
                             <div class="input-group-text">
@@ -36,10 +35,10 @@
                     </div>
                 </div>
                 <div class="card-footer">
-                    <button type="submit" href="" class="btn btn-primary btn-lg btn-block mb-3">{{ __('Log in') }}</button>
+                    <button type="submit" href="" class="btn btn-primary btn-lg btn-block mb-3">{{ __('Login') }}</button>
                     <div class="pull-left">
                         <h6>
-                            <a href="{{ route('register.index') }}" class="link footer-link">{{ __('Create Account') }}</a>
+                            <a href="{{ route('register') }}" class="link footer-link">{{ __('Create Account') }}</a>
                         </h6>
                     </div>
                     <div class="pull-right">

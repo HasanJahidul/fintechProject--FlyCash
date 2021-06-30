@@ -1,119 +1,60 @@
 <div class="sidebar">
     <div class="sidebar-wrapper">
-        <div class="logo">  
-        <img src="{{ asset('black') }}/img/flycash.png" alt="">
-            <a href="#" class="simple-text logo-normal">{{ __('Flycash Dashboard') }}</a>
+        <div class="logo">
+            <!-- <a href="#" class="simple-text logo-mini">{{ __('BD') }}</a> -->
+            <img class="avatar" src="{{ asset('black') }}/img/flycash.png" alt="">
+            <a href="#" align="center" class="simple-text logo-normal">{{ __('FlyCash') }}</a>
         </div>
         <ul class="nav">
-             
-             <li>
+            <li @if ($pageSlug == 'dashboard') class="active " @endif>
                 <a href="{{ route('home') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ __('Dashboard') }}</p>
                 </a>
             </li>
-            <li>
-                <a data-toggle="collapse" href="#laravel-examples" aria-expanded="true">
-                    <i class="fab fa-laravel" ></i>
-                    <span class="nav-link-text" >{{ __('Transactions') }}</span>
-                    <b class="caret mt-1"></b>
-                </a>
-
-                <div class="collapse show" id="laravel-examples">
-                    <ul class="nav pl-4">
-                        <li >
-                            <a href="{{ route('customer_addmoney') }}">
-                                <i class="tim-icons icon-coins"></i>
-                                
-                                <p>{{ __('Add Money') }}</p>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="{{ route('customer_sendmoney') }}">
-                                <i class="tim-icons icon-single-02"></i>
-                                <p>{{ __('Send Money') }}</p>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="{{ route('customer_cashout') }}">
-                                <i class="tim-icons icon-money-coins"></i>
-                                <p>{{ __('Cash out') }}</p>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="{{ route('customer_paybill') }}">
-                                <i class="tim-icons icon-credit-card"></i>
-                                <p>{{ __('Bill pay') }}</p>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="#">
-                                <i class="tim-icons icon-send"></i>
-                                <p>{{ __('Send Money') }}</p>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="{{ route('customer_recharge') }}">
-                                <i class="tim-icons icon-mobile"></i>
-                                <p>{{ __('Mobile Recharge') }}</p>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="{{ route('customer_transfermoney') }}">
-                                <i class="tim-icons icon-bank"></i>
-                                <p>{{ __('Transfer Money') }}</p>
-                            </a>
-                        </li>
-                        <li >
-                            <a href="#">
-                                <i class="tim-icons icon-bus-front-12"></i>
-                                <p>{{ __('buy tickets') }}</p>
-                            </a>
-                        </li>
-                        
-                    </ul>
-                </div>
-            </li>
-
-            <li >
-                            <a href="{{ route('profile.edit')  }}">
-                                <i class="tim-icons icon-single-02"></i>
-                                <p>{{ __('User Profile') }}</p>
-                            </a>
-                        </li>
-            
-            <li>
-                <a href="{{ route('pages.icons') }}">
-                    <i class="tim-icons icon-atom"></i>
-                    <p>{{ __('Icons') }}</p>
+            <li @if ($pageSlug == 'addmoney') class="active " @endif>
+                <a href="{{ route('pages.agent.addmoney') }}">
+                    <i class="tim-icons icon-simple-add"></i>
+                    <p>{{ __('Add Money') }}</p>
                 </a>
             </li>
-            <li >
-                <a href="{{ route('pages.maps') }}">
-                    <i class="tim-icons icon-pin"></i>
-                    <p>{{ __('Maps') }}</p>
+            <li @if ($pageSlug == 'viewprofile') class="active " @endif>
+            <a href="{{ route('pages.agent.view') }}">
+                    <i class="tim-icons icon-badge"></i>
+                    <p>{{ __('View Profile') }}</p>
                 </a>
             </li>
-            <li >
-                <a href="{{ route('pages.notifications') }}">
-                    <i class="tim-icons icon-bell-55"></i>
-                    <p>{{ __('Notifications') }}</p>
+            <li @if ($pageSlug == 'editprofile') class="active " @endif>
+            <a href="{{ route('profile.edit') }}">
+                    <i class="tim-icons icon-pencil"></i>
+                    <p>{{ __('Edit Profile') }}</p>
                 </a>
             </li>
-            <li>
-                <a href="{{ route('pages.transactionlist') }}">
-                    <i class="tim-icons icon-notes"></i>
-                    <p>{{ __('Transaction List') }}</p>
+            <li @if ($pageSlug == 'changeprofilepicture') class="active " @endif>
+            <a href="{{ route('profile.edit') }}">
+                    <i class="tim-icons icon-image-02"></i>
+                    <p>{{ __('Change Profile Picture') }}</p>
                 </a>
             </li>
-            <li >
-                <a href="{{ route('pages.typography') }}">
-                    <i class="tim-icons icon-align-center"></i>
-                    <p>{{ __('Typography') }}</p>
+            <li @if ($pageSlug == 'changepassword') class="active " @endif>
+            <a href="{{ route('profile.edit') }}">
+                    <i class="tim-icons icon-key-25"></i>
+                    <p>{{ __('Change Password') }}</p>
                 </a>
             </li>
-            
-            <li class=" ">
+            <li @if ($pageSlug == 'feedback') class="active " @endif>
+                <a href="{{ route('pages.agent.feedback') }}">
+                    <i class="tim-icons icon-puzzle-10"></i>
+                    <p>{{ __('Feedback') }}</p>
+                </a>
+            </li>
+            <li @if ($pageSlug == 'chat') class="active " @endif>
+                <a href="{{ route('pages.agent.chat') }}">
+                    <i class="tim-icons icon-chat-33"></i>
+                    <p>{{ __('Chat') }}</p>
+                </a>
+            </li>
+            <li class=" {{ $pageSlug == 'upgrade' ? 'active' : '' }} bg-info">
                 <a href="{{ route('pages.upgrade') }}">
                     <i class="tim-icons icon-spaceship"></i>
                     <p>{{ __('Upgrade to PRO') }}</p>

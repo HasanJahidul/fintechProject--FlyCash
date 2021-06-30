@@ -16,22 +16,24 @@
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 <label>{{ __('Name') }}</label>
-                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ session('name') }}">
+                                <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}">
                                 @include('alerts.feedback', ['field' => 'name'])
                             </div>
-                            <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
-                                <label>{{ __('Phone Number') }}</label>
-                                <input type="text" name="phone" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********
-                                ') }}" value="{{ session('phone') }}"">
-                                @include('alerts.feedback', ['field' => 'name'])
-                            </div>
-                           
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
                                 <label>{{ __('Email address') }}</label>
-                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}"value="{{ session('email') }}"">
+                                <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}" value="{{ old('email', auth()->user()->email) }}">
                                 @include('alerts.feedback', ['field' => 'email'])
                             </div>
+
+                            <div class="form-group{{ $errors->has('nidnumber') ? ' has-danger' : '' }}">
+                                <label>{{ __('NID Number') }}</label>
+                                <input type="text" name="nidnumber" class="form-control{{ $errors->has('nidnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('01234567895') }}" value="{{ old('name', auth()->user()->name) }}">
+                                @include('alerts.feedback', ['field' => 'nidnumber'])
+                            </div>
+
+
+
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Save') }}</button>
@@ -83,10 +85,10 @@
                             <div class="block block-four"></div>
                             <a href="#">
                                 <img class="avatar" src="{{ asset('black') }}/img/emilyz.jpg" alt="">
-                                <h5 class="title">{{session('name')}}</h5>
+                                <h5 class="title">{{ auth()->user()->name }}</h5>
                             </a>
                             <p class="description">
-                            {{session('type')}} Account
+                                {{ __('Ceo/Co-Founder') }}
                             </p>
                         </div>
                     </p>
