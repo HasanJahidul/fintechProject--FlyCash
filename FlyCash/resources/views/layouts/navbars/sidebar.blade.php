@@ -7,7 +7,7 @@
         <ul class="nav">
              
              <li>
-                <a href="{{ route('home') }}">
+                <a href="{{ route('customer_home') }}">
                     <i class="tim-icons icon-chart-pie-36"></i>
                     <p>{{ __('Dashboard') }}</p>
                 </a>
@@ -29,8 +29,8 @@
                             </a>
                         </li>
                         <li >
-                            <a href="{{ route('customer_sendmoney') }}">
-                                <i class="tim-icons icon-single-02"></i>
+                        <a href="{{ route('customer_sendmoney') }}">
+                                <i class="tim-icons icon-send"></i>
                                 <p>{{ __('Send Money') }}</p>
                             </a>
                         </li>
@@ -46,12 +46,7 @@
                                 <p>{{ __('Bill pay') }}</p>
                             </a>
                         </li>
-                        <li >
-                            <a href="#">
-                                <i class="tim-icons icon-send"></i>
-                                <p>{{ __('Send Money') }}</p>
-                            </a>
-                        </li>
+                       
                         <li >
                             <a href="{{ route('customer_recharge') }}">
                                 <i class="tim-icons icon-mobile"></i>

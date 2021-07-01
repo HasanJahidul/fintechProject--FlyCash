@@ -8,9 +8,13 @@ class HomeController extends Controller
     {
         return view('auth.register');
     }
-    public function index()
+    public function customer()
     {
-        return view('dashboard');
+        return view('customerDashboard');
+    }
+    public function agent()
+    {
+        return view('agentDashboard');
     }
 
 }

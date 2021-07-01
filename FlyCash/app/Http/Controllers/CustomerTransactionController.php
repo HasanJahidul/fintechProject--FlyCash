@@ -2,7 +2,7 @@
 
 namespace App\Http\Controllers;
 
-class TransactionController extends Controller
+class CustomerTransactionController extends Controller
 {
     /**
      * Create a new controller instance.
