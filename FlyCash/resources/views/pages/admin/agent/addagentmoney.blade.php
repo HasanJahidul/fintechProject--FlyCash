@@ -12,9 +12,9 @@
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
                             <a href="#">
-                                <img class="avatar" src="{{ asset('black') }}/img/takaout.png" alt="">
+                                <img class="avatar" src="{{ asset('black') }}/img/admin/addMoney.png" alt="sendmoney">
                                 </a>
-                                <h3>Cash Out</h3>
+                                <h3>Add Money</h3>
                         </div>
                     </p>
                     <label>{{ __('Account Number') }}</label>
@@ -26,11 +26,11 @@
                     @include('alerts.feedback', ['field' => 'amount'])
                     
                     <label>{{ __('Password') }}</label>
-                    <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('********') }}">
+                    <input type="password" name="password" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('******') }}">
                     @include('alerts.feedback', ['field' => 'password'])
                 </div>
                 <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">{{ __('Cash Out') }}</button>
+                        <button type="submit" class="btn btn-fill btn-primary">{{ __('Add Money') }}</button>
                     </div>
                 </div>
             </div>

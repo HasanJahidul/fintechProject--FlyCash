@@ -48,27 +48,60 @@ Route::group(['middleware' => 'checkSession'], function () {
 	});
 		Route::group(['middleware' => 'agent'], function () {
 		
-		//Route::get('/agent-home', 'App\Http\Controllers\HomeController@agent')->name('agent_home');
+		Route::get('/agent-home', 'App\Http\Controllers\HomeController@agent')->name('agent_home');
 		
-		Route::get('/agent-cashin', [ 'uses' => 'App\Http\Controllers\AgentTransactionController@cashin'])->name('pages.agent.transaction.cashin');
-		Route::get('cashout', ['as' => 'pages.agent.transaction.cashout', 'uses' => 'App\Http\Controllers\AgentTransactionController@cashout']);
-		Route::get('requestmoney', ['as' => 'pages.agent.transaction.requestmoney', 'uses' => 'App\Http\Controllers\AgentTransactionController@requestmoney']);
-		Route::get('paybill', ['as' => 'pages.agent.transaction.paybill', 'uses' => 'App\Http\Controllers\AgentTransactionController@paybill']);
-		Route::get('bkash', ['as' => 'pages.agent.transaction.bkash', 'uses' => 'App\Http\Controllers\AgentTransactionController@bkash']);
-		Route::get('nagad', ['as' => 'pages.agent.transaction.nagad', 'uses' => 'App\Http\Controllers\AgentTransactionController@nagad']);
-		Route::get('rocket', ['as' => 'pages.agent.transaction.rocket', 'uses' => 'App\Http\Controllers\AgentTransactionController@rocket']);
-		Route::get('upay', ['as' => 'pages.agent.transaction.upay', 'uses' => 'App\Http\Controllers\AgentTransactionController@upay']);
-		Route::get('surecash', ['as' => 'pages.agent.transaction.surecash', 'uses' => 'App\Http\Controllers\AgentTransactionController@surecash']);
-		Route::get('bankcard', ['as' => 'pages.agent.transaction.bankcard', 'uses' => 'App\Http\Controllers\AgentTransactionController@bankcard']);
-		Route::get('recharge', ['as' => 'pages.agent.transaction.recharge', 'uses' => 'App\Http\Controllers\AgentTransactionController@recharge']);
+		Route::get('/agent-cashin', ['uses' => 'App\Http\Controllers\AgentTransactionController@cashin'])->name('agent_cashin');
+		Route::get('/agent-cashout', ['uses' => 'App\Http\Controllers\AgentTransactionController@cashout'])->name('agent_cashout');
+		Route::get('/agent-requestmoney', ['uses' => 'App\Http\Controllers\AgentTransactionController@requestmoney'])->name('agent_requestmoney');
+		Route::get('/agent-paybill', ['uses' => 'App\Http\Controllers\AgentTransactionController@paybill'])->name('agent_paybill');
+		Route::get('/agent-bkash', ['uses' => 'App\Http\Controllers\AgentTransactionController@bkash'])->name('agent_bkash');
+		Route::get('/agent-nagad', ['uses' => 'App\Http\Controllers\AgentTransactionController@nagad'])->name('agent_nagad');
+		Route::get('/agent-rocket', ['uses' => 'App\Http\Controllers\AgentTransactionController@rocket'])->name('agent_rocket');
+		Route::get('/agent-upay', ['uses' => 'App\Http\Controllers\AgentTransactionController@upay'])->name('agent_upay');
+		Route::get('/agent-surecash', ['uses' => 'App\Http\Controllers\AgentTransactionController@surecash'])->name('agent_surecash');
+		Route::get('/agent-bankcard', ['uses' => 'App\Http\Controllers\AgentTransactionController@bankcard'])->name('agent_bankcard');
+		Route::get('/agent-recharge', ['uses' => 'App\Http\Controllers\AgentTransactionController@recharge'])->name('agent_recharge');
 		
-		Route::get('addmoney', ['as' => 'pages.agent.addmoney', 'uses' => 'App\Http\Controllers\AgentTransactionController@addmoney']);
-		Route::get('view', ['as' => 'pages.agent.view', 'uses' => 'App\Http\Controllers\AgentTransactionController@view']);
-		Route::get('chat', ['as' => 'pages.agent.chat', 'uses' => 'App\Http\Controllers\AgentTransactionController@chat']);
-		Route::get('adduser', ['as' => 'pages.agent.adduser', 'uses' => 'App\Http\Controllers\AgentTransactionController@adduser']);
-		Route::get('/feedback', ['as' => 'pages.agent.feedback', 'uses' => 'App\Http\Controllers\AgentTransactionController@feedback']);
-		Route::get('/agent-transactionlist', [ 'uses' => 'App\Http\Controllers\AgentTransactionController@transactionlist'])->name('agent_transactionlist');
-		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\AgentTransactionController@upgrade']);
+		Route::get('/agent-addmoney', ['uses' => 'App\Http\Controllers\AgentTransactionController@addmoney'])->name('agent_addmoney');
+		Route::get('/agent-view', ['uses' => 'App\Http\Controllers\AgentTransactionController@view'])->name('agent_view');
+		Route::get('/agent-chat', ['uses' => 'App\Http\Controllers\AgentTransactionController@chat'])->name('agent_chat');
+		Route::get('/agent-adduser', ['uses' => 'App\Http\Controllers\AgentTransactionController@adduser'])->name('agent_adduser');
+		Route::get('/agent-feedback', ['uses' => 'App\Http\Controllers\AgentTransactionController@feedback'])->name('agent_feedback');
+		Route::get('/agent-transactionlist', ['uses' => 'App\Http\Controllers\AgentTransactionController@transactionlist'])->name('agent_transactionlist');
+		Route::get('/agent-upgrade', ['uses' => 'App\Http\Controllers\AgentTransactionController@upgrade'])->name('agent_upgrade');
+
+		Route::get('maps', ['as' => 'pages.maps', 'uses' => 'App\Http\Controllers\PageController@maps']);
+		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
+		Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'App\Http\Controllers\PageController@rtl']);
+		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
+	});
+	
+
+		Route::group(['middleware' => 'admin'], function () {
+		
+		Route::get('/admin-adduser', ['uses' => 'App\Http\Controllers\UserController@adduser'])->name('admin_adduser');
+		Route::get('/admin-edituser', ['uses' => 'App\Http\Controllers\UserController@edituser'])->name('admin_edituser');
+		Route::get('/admin-transaction', ['uses' => 'App\Http\Controllers\UserController@transaction'])->name('admin_transaction');
+		Route::get('/admin-discount', [ 'uses' => 'App\Http\Controllers\UserController@discount'])->name('admin_discount');
+		Route::get('/admin-blockuser', ['uses' => 'App\Http\Controllers\UserController@blockuser'])->name('admin_blockuser');
+
+		Route::get('/admin-addagent', ['uses' => 'App\Http\Controllers\AgentController@addagent'])->name('admin_addagent');
+		Route::get('/admin-editagent', ['uses' => 'App\Http\Controllers\AgentController@editagent'])->name('admin_editagent');
+		Route::get('/admin-agenttransaction', ['uses' => 'App\Http\Controllers\AgentController@agenttransaction'])->name('admin_agenttransaction');
+		Route::get('/admin-addagentmoney', ['uses' => 'App\Http\Controllers\AgentController@addagentmoney'])->name('admin_addagentmoney');
+		Route::get('/admin-blockagent', ['uses' => 'App\Http\Controllers\AgentController@blockagent'])->name('admin_blockagent');
+		Route::get('/admin-chatagent', ['uses' => 'App\Http\Controllers\AgentController@chatagent'])->name('admin_chatagent');
+
+
+		Route::get('/admin-addofficer', ['uses' => 'App\Http\Controllers\OfficerController@addofficer'])->name('admin_addofficer');
+		Route::get('/admin-editofficer', ['uses' => 'App\Http\Controllers\OfficerController@editofficer'])->name('admin_editofficer');
+		Route::get('/admin-chatofficer', ['uses' => 'App\Http\Controllers\OfficerController@chatofficer'])->name('admin_chatofficer');
+
+		Route::get('/admin-addcampaign', ['uses' => 'App\Http\Controllers\CampaignController@addcampaign'])->name('admin_addcampaign');
+		Route::get('/admin-ongoingcampaign', ['uses' => 'App\Http\Controllers\CampaignController@ongoingcampaign'])->name('admin_ongoingcampaign');
+		Route::get('/admin-removecampaign', ['uses' => 'App\Http\Controllers\CampaignController@removecampaign'])->name('admin_removecampaign');
+	
+	
 	});
 
 
