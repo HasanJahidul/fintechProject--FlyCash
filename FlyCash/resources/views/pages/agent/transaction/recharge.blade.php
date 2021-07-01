@@ -12,7 +12,7 @@
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
                             <a href="#">
-                                <img class="avatar" src="{{ asset('black') }}/img/flycash.png" alt="">
+                                <img class="avatar" src="{{ asset('black') }}/img/recharge.png" alt="">
                                 </a>
                                 <h2>Mobile Recharge</h2>
                         </div>

@@ -87,7 +87,9 @@ class LoginController extends Controller
                 $req->session()->put('password', $agent->password);
                 $req->session()->put('balance', $agent->balance);
                 $req->session()->put('email', $agent->email);
-                $req->session()->put('phone', $agent->phone);
+                $req->session()->put('phone', $agent->phone); 
+                $req->session()->put('nid', $agent->nid);
+                $req->session()->put('dob', $agent->dob);
                 $type=$req->session()->put('type', $agent->type);
                 //dd(session()->all());
                 return redirect("/agent-home");

@@ -1,7 +1,6 @@
 @extends('layouts.app', ['page' => __('User Profile'), 'pageSlug' => 'profile'])
 
 @section('content')
-@csrf
     <div class="d-flex justify-content-center">
         <div class="col-md-4">
             <div class="card card-user">
@@ -13,7 +12,7 @@
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
                             <a href="#">
-                                <img class="avatar" src="{{ asset('black') }}/img/flycash.png" alt="">
+                                <img class="avatar" src="{{ asset('black') }}/img/takain.png" alt="">
                                 </a>
                                 <h3>Cash In</h3>
                         </div>

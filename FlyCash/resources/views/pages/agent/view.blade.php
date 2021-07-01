@@ -15,7 +15,7 @@
                             <a href="#">
                                 <img class="avatar" src="{{ asset('black') }}/img/emilyz.jpg" alt="">
                                 <h4 class="title">{{ __('FlyCash') }}</h4>
-                                <h5 class="title">{{ __('MD,SABBIR HOSSAIN BORNO') }}</h5>
+                                <h5 class="title">{{session('name')}}</h5>
                             </a>
                             <p class="description">
                                 {{ __('Agent') }}
@@ -55,39 +55,29 @@
 
                             <div class="form-group{{ $errors->has('name') ? ' has-danger' : '' }}">
                                 
-                                <label>{{ __('Name : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{ old('name', auth()->user()->name) }}</label>
+                                <label>{{ __('Name : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{session('name')}} </label>
                                 
-                                <!-- <input type="text" name="name" class="form-control{{ $errors->has('name') ? ' is-invalid' : '' }}" placeholder="{{ __('Name') }}" value="{{ old('name', auth()->user()->name) }}"> -->
-                                <!-- @include('alerts.feedback', ['field' => 'name']) -->
-                            </div>
+                                
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label>{{ __('Email : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{ old('email', auth()->user()->email) }}</label>
-                                <!-- <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}" value="{{ old('email', auth()->user()->email) }}"> -->
-                                <!-- @include('alerts.feedback', ['field' => 'email']) -->
+                                <label>{{ __('Email : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{session('email')}}</label>
+                               
                             </div>
 
 
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label>{{ __('Mobile Number : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{ __('+08801716653557') }}</label>
-                                <!-- <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}" value="{{ old('email', auth()->user()->email) }}"> -->
-                                <!-- @include('alerts.feedback', ['field' => 'email']) -->
+                                <label>{{ __('Mobile Number : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{session('phone')}}</label>
+                               
                             </div>
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label>{{ __('NID Number : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{ __('8547963215') }}</label>
-                                <!-- <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}" value="{{ old('email', auth()->user()->email) }}"> -->
-                                <!-- @include('alerts.feedback', ['field' => 'email']) -->
+                                <label>{{ __('NID Number : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{session('nid')}}</label>
+                                
                             </div>
+                           
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label>{{ __('Gender : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{ __('Male') }}</label>
-                                <!-- <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}" value="{{ old('email', auth()->user()->email) }}"> -->
-                                <!-- @include('alerts.feedback', ['field' => 'email']) -->
-                            </div>
-                            <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label>{{ __('Date Of Birth : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{ __('02-04-1998') }}</label>
-                                <!-- <input type="email" name="email" class="form-control{{ $errors->has('email') ? ' is-invalid' : '' }}" placeholder="{{ __('Email address') }}" value="{{ old('email', auth()->user()->email) }}"> -->
-                                <!-- @include('alerts.feedback', ['field' => 'email']) -->
+                                <label>{{ __('Date Of Birth : ') }}</label>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<label>{{session('dob')}}</label>
+                               
                             </div>
                     </div>
                 </form>

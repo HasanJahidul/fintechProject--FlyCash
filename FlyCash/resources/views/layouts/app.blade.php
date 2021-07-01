@@ -22,22 +22,36 @@
     </head>
     @csrf
     <body class="{{ $class ?? '' }}">
-        @if (session()->has('email') )
+    
+    @if (session()->has('email') )
+            @if (session()->get('type')=='customer' )
             <div class="wrapper">
-                    @include('layouts.navbars.sidebar')
-                <div class="main-panel">
-                    @include('layouts.navbars.navbar')
+                        @include('layouts.navbars.sidebar')
+                    <div class="main-panel">
+                        @include('layouts.navbars.navbar')
 
-                    <div class="content">
-                        @yield('content')
+                        <div class="content">
+                            @yield('content')
+                        </div>
+
+                        @include('layouts.footer')
                     </div>
-
-                    @include('layouts.footer')
-                </div>
-            </div>
+                </div>   
+            @elseif(session()->get('type')=='agent' )
             
-                
-           
+            <div class="wrapper">
+                        @include('layouts.navbars.agentSidebar')
+                    <div class="main-panel">
+                        @include('layouts.navbars.navbar')
+
+                        <div class="content">
+                            @yield('content')
+                        </div>
+
+                        @include('layouts.footer')
+                    </div>
+                </div>   
+            @endif
         @else
             @include('layouts.navbars.navbar')
             <div class="wrapper wrapper-full-page">
@@ -51,6 +65,7 @@
                 </div>
             </div>
         @endif
+        
         
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('black') }}/js/core/popper.min.js"></script>

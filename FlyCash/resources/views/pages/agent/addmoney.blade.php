@@ -1,4 +1,4 @@
-@extends('layouts.app', ['page' => __('Icons'), 'pageSlug' => 'icons'])
+@extends('layouts.app', ['page' => ('Icons'), 'pageSlug' => 'icons'])
 
 @section('content')
 <div class="row">
@@ -14,8 +14,8 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.bkash') }}">
-                    <img src="{{ asset('black') }}/img/Bkash.png" alt="{{ __('Profile Photo') }}">
+                    <a href="{{ route('agent_bkash') }}">
+                    <img src="{{ asset('black') }}/img/Bkash.png" alt="{{ ('Profile Photo') }}">
                         <h4>Bkash</h4>
                         </a>
                     </div>
@@ -26,8 +26,8 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.nagad') }}">
-                    <img src="{{ asset('black') }}/img/Nagad.png" alt="{{ __('Profile Photo') }}">
+                    <a href="{{ route('agent_nagad') }}">
+                    <img src="{{ asset('black') }}/img/Nagad.png" alt="{{ ('Profile Photo') }}">
                         <h4>Nagad</h4>
                         </a>
                     </div>
@@ -38,8 +38,8 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.rocket') }}">
-                    <img src="{{ asset('black') }}/img/Rocket.png" alt="{{ __('Profile Photo') }}">
+                    <a href="{{ route('agent_rocket') }}">
+                    <img src="{{ asset('black') }}/img/Rocket.png" alt="{{ ('Profile Photo') }}">
                         <h4>Rocket</h4>
                         </a>
                     </div>
@@ -50,8 +50,8 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.upay') }}">
-                    <img src="{{ asset('black') }}/img/upay.jpg" alt="{{ __('Profile Photo') }}">
+                    <a href="{{ route('agent_upay') }}">
+                    <img src="{{ asset('black') }}/img/upay.jpg" alt="{{ ('Profile Photo') }}">
                         <h4>Upay</h4>
                         </a>
                     </div>
@@ -62,8 +62,8 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.surecash') }}">
-                    <img src="{{ asset('black') }}/img/surecash.png" alt="{{ __('Profile Photo') }}">
+                    <a href="{{ route('agent_surecash') }}">
+                    <img src="{{ asset('black') }}/img/surecash.png" alt="{{ ('Profile Photo') }}">
                         <h4>Sure Cash</h4>
                         </a>
                     </div>
@@ -74,7 +74,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.bankcard') }}">
+                    <a href="{{ route('agent_bankcard') }}">
                     <img src="{{ asset('black') }}/img/CreditCard.png" alt="{{ __('Profile Photo') }}">
                         <h4>Bank Card</h4>
                         </a>
@@ -82,7 +82,7 @@
                 </div>
             </div>
         </div>
-            
+
           </div>
         </div>
       </div>

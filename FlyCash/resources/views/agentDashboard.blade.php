@@ -1,7 +1,6 @@
 @extends('layouts.app', ['pageSlug' => 'dashboard'])
 
 @section('content')
-   @csrf
     <div class="row">
         <div class="col-12">
             <div class="card card-chart">
@@ -9,7 +8,7 @@
                     <div class="row">
                         <div class="col-sm-6 text-left">
                             <h2 class="card-title">DASHBOARD</h2>
-                            <h4 class="card-title">Balance : {{session('balance')}}</h4>
+                            <h4 class="card-title">Balance :{{session('balance')}}</h4>
                         </div>
                     </div>
                 </div>
@@ -28,7 +27,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                        <a href="{{ route('pages.agent.transaction.cashin') }}">
+                        <a href="{{ route('agent_cashin') }}">
                         <img src="{{ asset('black') }}/img/takain.png">
                         <div class="picname">
                         <h4>Cash In</h4>
@@ -42,7 +41,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.cashout') }}">
+                    <a href="{{ route('agent_cashout') }}">
                     <img src="{{ asset('black') }}/img/takaout.png" alt="{{ __('Profile Photo') }}">
                         <h4>Cash Out</h4>
                         </a>
@@ -54,7 +53,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.adduser') }}">
+                    <a href="{{ route('agent_adduser') }}">
                         <img src="{{ asset('black') }}/img/adduser.png" alt="{{ __('Profile Photo') }}">
                         <h4>Add User</h4>
                         </a>
@@ -66,7 +65,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.requestmoney') }}">
+                    <a href="{{ route('agent_requestmoney') }}">
                     <img src="{{ asset('black') }}/img/reqMoney.png" alt="{{ __('Profile Photo') }}">
                         <h4>Request Money</h4>
                         </a>
@@ -78,7 +77,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.paybill') }}">
+                    <a href="{{ route('agent_paybill') }}">
                     <img src="{{ asset('black') }}/img/paybill.png" alt="{{ __('Profile Photo') }}">
                         <h4>Pay Bill</h4>
                         </a>
@@ -90,7 +89,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                        <a href="{{ route('agent_transactionlist') }}">
+                        <a href="#">
                         <img src="{{ asset('black') }}/img/transaction.png" alt="{{ __('Profile Photo') }}">
                         <h4>Transaction List</h4>
                         </a>
@@ -102,7 +101,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('pages.agent.transaction.recharge') }}">
+                    <a href="{{ route('agent_recharge') }}">
                     <img src="{{ asset('black') }}/img/recharge.png" alt="{{ __('Profile Photo') }}">
                         <h4>Mobile Recharge</h4>
                         </a>
