@@ -16,5 +16,9 @@ class HomeController extends Controller
     {
         return view('agentDashboard');
     }
+    public function admin()
+    {
+        return view('adminDashboard');
+    }
 
 }

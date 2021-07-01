@@ -17,14 +17,13 @@ class LoginusersTableSeeder extends Seeder
         DB::table('loginusers')->insert([
             'id' => 1,
             'name' => 'joy',
-            'email' => 'joy@gmail.com.com',
-            
+            'email' => 'joy@gmail.com',
             'type' => 'customer',
-
             'password' => '1234567',
             'created_at' => now(),
             'updated_at' => now()
         ]);
+
         DB::table('loginusers')->insert([
             'id' => 2,
             'name' => 'Borno',
@@ -34,5 +33,16 @@ class LoginusersTableSeeder extends Seeder
             'created_at' => now(),
             'updated_at' => now()
         ]);
+        
+        DB::table('loginusers')->insert([
+            'id' => 3,
+            'name' => 'Faiyaz Shahrear',
+            'email' => 'shahrearfaiyaz@gmail.com',
+            'type' => 'admin',
+            'password' => '12345678',
+            'created_at' => now(),
+            'updated_at' => now()
+        ]);
+        
     }
 }

@@ -2,7 +2,7 @@
 
 @section('content')
 <body>
-<form method="POST" action="{{route(addcampaign}}" enctype="multipart/form-data">
+
     @csrf
     <div class="d-flex justify-content-center">
         <div class="col-md-4">
@@ -38,6 +38,5 @@
                 </div>
             </div>
     </div>
-    </form>
     </body>
 @endsection

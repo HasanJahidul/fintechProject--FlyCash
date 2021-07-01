@@ -12,6 +12,7 @@ use Validator;
 use App\Http\Requests\LoginUserRequest;
 use App\Models\Loginuser;
 use App\Models\Customer;
+use App\Models\Admin;
 use App\Models\Agent;
 class LoginController extends Controller
 {
@@ -93,7 +94,25 @@ class LoginController extends Controller
                 $type=$req->session()->put('type', $agent->type);
                 //dd(session()->all());
                 return redirect("/agent-home");
-            }else{
+            } 
+            elseif ($type == "admin")
+            {   
+                $admin = Admin::where('email',$req->email)
+                ->first();
+                
+                $req->session()->put('email', $admin->email);
+                $req->session()->put('name', $admin->name);
+                $req->session()->put('password', $admin->password);
+                $req->session()->put('profit', $admin->profit);
+                $req->session()->put('phone', $admin->phone); 
+                $req->session()->put('nid', $admin->nid);
+                $req->session()->put('dob', $admin->dob);
+                $type=$req->session()->put('type', $admin->type);
+                //dd(session()->all());
+                return redirect("/admin-home");
+
+            }
+            else{
                 print_r($type);
             }
             
