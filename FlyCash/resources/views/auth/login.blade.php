@@ -14,6 +14,11 @@
                 <img src="{{ asset('black') }}/img/flycash.png" alt="">
                     <h1 align="center" class="card-title">{{ __('Log in') }}</h1>
                 </div>
+                {{session('msg')}}
+                                        
+                        @foreach ($errors->all() as $err)
+                            {{$err}}
+                        @endforeach
                 <div class="card-body">
                     <!-- <p class="text-dark mb-2">Sign in with <strong>admin@black.com</strong> and the password <strong>secret</strong></p> -->
                     <div class="input-group{{ $errors->has('email') ? ' has-danger' : '' }}">

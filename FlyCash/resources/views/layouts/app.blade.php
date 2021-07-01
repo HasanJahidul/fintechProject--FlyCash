@@ -20,6 +20,7 @@
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
     </head>
+    @csrf
     <body class="{{ $class ?? '' }}">
         @if (session()->has('email') )
             <div class="wrapper">
@@ -34,9 +35,9 @@
                     @include('layouts.footer')
                 </div>
             </div>
-            <form id="logout-form" action="/logout" method="get" style="display: none;">
-                @csrf
-            </form>
+            
+                
+           
         @else
             @include('layouts.navbars.navbar')
             <div class="wrapper wrapper-full-page">

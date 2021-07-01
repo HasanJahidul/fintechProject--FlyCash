@@ -8,6 +8,6 @@ use Illuminate\Database\Eloquent\Model;
 class Loginuser extends Model
 {
     use HasFactory;
-    const CREATED_AT = 'date_added';
-    const UPDATED_AT = 'last_updated';
+    const UPDATED_AT =  'last_loggedin';
+    const CREATED_AT =  'date_added';
 }

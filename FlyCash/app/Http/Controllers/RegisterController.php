@@ -6,7 +6,7 @@ use Illuminate\Http\Request;
 use Validator;
 use App\Http\Requests\LoginUserRequest;
 use App\Models\Loginuser;
-use App\Models\User;
+use App\Models\Customer;
 
 
 class RegisterController extends Controller
@@ -31,7 +31,7 @@ class RegisterController extends Controller
             echo 'registration Complete';
         }
     public function insert(Request $req){
-        if ($req-> password == $req-> confirm_password)
+        if ($req-> password == $req-> password_confirmation)
         {
             $status = Loginuser::where('email',$req->email)
             ->first();
@@ -42,20 +42,24 @@ class RegisterController extends Controller
         }else{
 
             $loginuser = new Loginuser;
-            $User = new User;
+            $customer = new Customer;
 
-        $user->name = $req->name;
-        $user->email = $req->email;
-        $user->password = $req->password;
-        $user->phone = $req->phone;
-        $user->nid = $req->nid;
-        $user->dob = $req->dob;
-        $user->type = $req->type;
+        
+        $customer->name = $req->name;
+        $customer->email = $req->email;
+        $customer->password = $req->password;
+       
+        $customer->phone = $req->phone;
+        $customer->nid = $req->nid;
+        $customer->dob = $req->dob;
+        $customer->type = $req->type;
+        $customer->openning_date= now();
         //$user->user_type = "active";
-        $user->save();
+        $customer->save();
 
         $loginuser->email = $req->email;
         $loginuser->password = $req->password;
+        $loginuser->type = $req->type;
         $loginuser->save();
         return redirect('/login');
 

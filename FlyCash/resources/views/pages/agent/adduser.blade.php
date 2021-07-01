@@ -1,51 +1,23 @@
-@extends('layouts.app', ['class' => 'register-page', 'page' => __('Register Page'), 'contentClass' => 'register-page'])
+@extends('layouts.app', ['page' => __('User Profile'), 'pageSlug' => 'profile'])
 
 @section('content')
-    <div class="row">
-  
-        <!-- <div class="col-md-5 ml-auto">
-            <div class="info-area info-horizontal mt-5">
-                <div class="icon icon-warning">
-                    <i class="tim-icons icon-wifi"></i>
-                </div>
-                <div class="description">
-                    <h3 class="info-title">{{ __('Marketing') }}</h3>
-                    <p class="description">
-                        {{ __('We\'ve created the marketing campaign of the website. It was a very interesting collaboration.') }}
+    <div class="d-flex justify-content-center">
+        <div class="col-md-4">
+            <div class="card card-user">
+                <div class="card-body">
+                    <p class="card-text">
+                        <div class="author">
+                            <div class="block block-one"></div>
+                            <div class="block block-two"></div>
+                            <div class="block block-three"></div>
+                            <div class="block block-four"></div>
+                            <a href="#">
+                                <img class="avatar" src="{{ asset('black') }}/img/addpropic.png" alt="">
+                                </a>
+                                <h3>Add User</h3>
+                        </div>
                     </p>
-                </div>
-            </div>
-            <div class="info-area info-horizontal">
-                <div class="icon icon-primary">
-                    <i class="tim-icons icon-triangle-right-17"></i>
-                </div>
-                <div class="description">
-                    <h3 class="info-title">{{ __('Fully Coded in HTML5') }}</h3>
-                    <p class="description">
-                        {{ __('We\'ve developed the website with HTML5 and CSS3. The client has access to the code using GitHub.') }}
-                    </p>
-                </div>
-            </div>
-            <div class="info-area info-horizontal">
-                <div class="icon icon-info">
-                    <i class="tim-icons icon-trophy"></i>
-                </div>
-                <div class="description">
-                    <h3 class="info-title">{{ __('Built Audience') }}</h3>
-                    <p class="description">
-                        {{ __('There is also a Fully Customizable CMS Admin Dashboard for this product.') }}
-                    </p>
-                </div>
-            </div>
-        </div> -->
-        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
-        
-            <div align="center" class="card card-register card-white">
-                <div class="card-header">
-                <img src="{{ asset('black') }}/img/flycash.png" alt="">
-                    <h4 align= "center" class="card-title">{{ __('Registration') }}</h4>
-                </div>
-                <form class="form" method="post">
+                    <form class="form" method="post" action="{{ route('register') }}">
                     @csrf
 
                     <div class="card-body">
@@ -96,7 +68,7 @@
                         <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-badge"></i>
+                                    <i class="tim-icons icon-credit-card"></i>
                                 </div>
                             </div>
                             <input type="text" name="nid" class="form-control{{ $errors->has('nid') ? ' is-invalid' : '' }}" placeholder="{{ __('NID Number') }}">
@@ -109,35 +81,39 @@
                                     <i class="tim-icons icon-calendar-60"></i>
                                 </div>
                             </div>
-                            <input type="date" name="dob" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" placeholder="{{ __('Date of Birth') }}">
+                            <input type="date" name="dob" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" placeholder="{{ __('') }}">
                             @include('alerts.feedback', ['field' => 'dob'])
                         </div>
                         <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                <i class="tim-icons icon-single-02"></i>
+                                    <i class="tim-icons icon-badge"></i>
                                 </div>
                             </div>
                             <select  type="text" name="type" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" placeholder="{{ __('Account Type') }}">
-
-                            <option value="{{ 'Account Type' }}" name= "admin" placeholder="{{ __('Account Type') }}">Admin</option>
-                            <option value="Admin" name= "user" placeholder="{{ __('Account Type') }}">User</option>
-                            <option value="{{ 'Account Type' }}" name= "agent" placeholder="{{ __('Account Type') }}">Agent</option>
-                            <option value="Admin" name= "communication_officer" placeholder="{{ __('Account Type') }}">Communication Officer</option>
+                            <option value="{{ 'Account Type' }}" name= "user" placeholder="{{ __('Account Type') }}">User</option>
                             </select>
                             @include('alerts.feedback', ['field' => 'type'])
                         </div>
-                        {{session('msg')}}
-                                        
-                        @foreach ($errors->all() as $err)
-                            {{$err}}
-                        @endforeach
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Get Started') }}</button>
+                        <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Add') }}</button>
                     </div>
                 </form>
+                </div>
             </div>
-        </div>
     </div>
 @endsection
+
+<!-- <div class="row">
+        
+        <div class="col-md-7 mr-auto">
+            <div class="card card-register card-white">
+                <div class="card-header">
+                <img src="{{ asset('black') }}/img/flycash.png" alt="">
+                    <h4 align= "center" class="card-title">{{ __('Registration') }}</h4>
+                </div>
+                
+            </div>
+        </div>
+    </div> -->
