@@ -24,7 +24,8 @@
     <body class="{{ $class ?? '' }}">
     
     @if (session()->has('email') )
-            @if (session()->get('type')=='customer' )
+        @if (session()->get('type')=='customer')
+            
             <div class="wrapper">
                         @include('layouts.navbars.sidebar')
                     <div class="main-panel">
@@ -36,10 +37,9 @@
 
                         @include('layouts.footer')
                     </div>
-                </div>   
-            @elseif(session()->get('type')=='agent' )
-            
-            <div class="wrapper">
+                </div> 
+          @elseif (session()->get('type')=='agent')
+          <div class="wrapper">
                         @include('layouts.navbars.agentSidebar')
                     <div class="main-panel">
                         @include('layouts.navbars.navbar')
@@ -50,8 +50,22 @@
 
                         @include('layouts.footer')
                     </div>
-                </div>   
+                </div> 
+                @elseif (session()->get('type')=='admin')
+                <div class="wrapper">
+                        @include('layouts.navbars.adminSidebar')
+                    <div class="main-panel">
+                        @include('layouts.navbars.navbar')
+
+                        <div class="content">
+                            @yield('content')
+                        </div>
+
+                        @include('layouts.footer')
+                    </div>
+                </div> 
             @endif
+            
         @else
             @include('layouts.navbars.navbar')
             <div class="wrapper wrapper-full-page">

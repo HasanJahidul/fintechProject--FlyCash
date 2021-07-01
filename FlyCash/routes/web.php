@@ -17,8 +17,9 @@ Route::get('/', function () {
     return view('welcome') ;
 })->name('welcome');
 
-// Route::get('/customer-home', 'App\Http\Controllers\HomeController@customer')->name('customer_home')->middleware('checkSession');
-Route::get('/agent-home', 'App\Http\Controllers\HomeController@agent')->name('agent_home')->middleware('checkSession');
+ Route::get('/customer-home', 'App\Http\Controllers\HomeController@customer')->name('customer_home')->middleware('checkSession');
+ Route::get('/agent-home', 'App\Http\Controllers\HomeController@agent')->name('agent_home')->middleware('checkSession');
+ Route::get('/admin-home', 'App\Http\Controllers\HomeController@admin')->name('admin_home')->middleware('checkSession');
 Route::get('/login', ['uses'=> 'App\Http\Controllers\LoginController@login'])->name('login');
 Route::post('/login', ['uses'=> 'App\Http\Controllers\LoginController@verify']);
 Route::get('/register', ['uses'=> 'App\Http\Controllers\RegisterController@register'])->name('register.index');
@@ -36,7 +37,6 @@ Route::get('/logout','App\Http\Controllers\LogoutController@logout');
 Route::group(['middleware' => 'checkSession'], function () {
 
 		Route::group(['middleware' => 'customer'], function () {
-		Route::get('/customer-home', 'App\Http\Controllers\HomeController@customer')->name('customer_home');
 		Route::get('/customer-addmoney', ['uses' => 'App\Http\Controllers\CustomerTransactionController@addmoney'])->name('customer_addmoney');
 		Route::get('/customer-sendmoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@sendmoney'])->name('customer_sendmoney');
 		Route::get('/customer-cashout', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@cashout'])->name('customer_cashout');
@@ -48,7 +48,7 @@ Route::group(['middleware' => 'checkSession'], function () {
 	});
 		Route::group(['middleware' => 'agent'], function () {
 		
-		Route::get('/agent-home', 'App\Http\Controllers\HomeController@agent')->name('agent_home');
+		
 		
 		Route::get('/agent-cashin', ['uses' => 'App\Http\Controllers\AgentTransactionController@cashin'])->name('agent_cashin');
 		Route::get('/agent-cashout', ['uses' => 'App\Http\Controllers\AgentTransactionController@cashout'])->name('agent_cashout');
@@ -78,28 +78,27 @@ Route::group(['middleware' => 'checkSession'], function () {
 	
 
 		Route::group(['middleware' => 'admin'], function () {
-		
-		Route::get('/admin-adduser', ['uses' => 'App\Http\Controllers\UserController@adduser'])->name('admin_adduser');
-		Route::get('/admin-edituser', ['uses' => 'App\Http\Controllers\UserController@edituser'])->name('admin_edituser');
-		Route::get('/admin-transaction', ['uses' => 'App\Http\Controllers\UserController@transaction'])->name('admin_transaction');
-		Route::get('/admin-discount', [ 'uses' => 'App\Http\Controllers\UserController@discount'])->name('admin_discount');
-		Route::get('/admin-blockuser', ['uses' => 'App\Http\Controllers\UserController@blockuser'])->name('admin_blockuser');
+		Route::get('/admin-adduser', ['uses' => 'App\Http\Controllers\AdminController@adduser'])->name('admin_adduser');
+		Route::get('/admin-edituser', ['uses' => 'App\Http\Controllers\AdminController@edituser'])->name('admin_edituser');
+		Route::get('/admin-transaction', ['uses' => 'App\Http\Controllers\AdminController@transaction'])->name('admin_transaction');
+		Route::get('/admin-discount', [ 'uses' => 'App\Http\Controllers\AdminController@discount'])->name('admin_discount');
+		Route::get('/admin-blockuser', ['uses' => 'App\Http\Controllers\AdminController@blockuser'])->name('admin_blockuser');
 
-		Route::get('/admin-addagent', ['uses' => 'App\Http\Controllers\AgentController@addagent'])->name('admin_addagent');
-		Route::get('/admin-editagent', ['uses' => 'App\Http\Controllers\AgentController@editagent'])->name('admin_editagent');
-		Route::get('/admin-agenttransaction', ['uses' => 'App\Http\Controllers\AgentController@agenttransaction'])->name('admin_agenttransaction');
-		Route::get('/admin-addagentmoney', ['uses' => 'App\Http\Controllers\AgentController@addagentmoney'])->name('admin_addagentmoney');
-		Route::get('/admin-blockagent', ['uses' => 'App\Http\Controllers\AgentController@blockagent'])->name('admin_blockagent');
-		Route::get('/admin-chatagent', ['uses' => 'App\Http\Controllers\AgentController@chatagent'])->name('admin_chatagent');
+		Route::get('/admin-addagent', ['uses' => 'App\Http\Controllers\AdminController@addagent'])->name('admin_addagent');
+		Route::get('/admin-editagent', ['uses' => 'App\Http\Controllers\AdminController@editagent'])->name('admin_editagent');
+		Route::get('/admin-agenttransaction', ['uses' => 'App\Http\Controllers\AdminController@agenttransaction'])->name('admin_agenttransaction');
+		Route::get('/admin-addagentmoney', ['uses' => 'App\Http\Controllers\AdminController@addagentmoney'])->name('admin_addagentmoney');
+		Route::get('/admin-blockagent', ['uses' => 'App\Http\Controllers\AdminController@blockagent'])->name('admin_blockagent');
+		Route::get('/admin-chatagent', ['uses' => 'App\Http\Controllers\AdminController@chatagent'])->name('admin_chatagent');
 
 
-		Route::get('/admin-addofficer', ['uses' => 'App\Http\Controllers\OfficerController@addofficer'])->name('admin_addofficer');
-		Route::get('/admin-editofficer', ['uses' => 'App\Http\Controllers\OfficerController@editofficer'])->name('admin_editofficer');
-		Route::get('/admin-chatofficer', ['uses' => 'App\Http\Controllers\OfficerController@chatofficer'])->name('admin_chatofficer');
+		Route::get('/admin-addofficer', ['uses' => 'App\Http\Controllers\AdminController@addofficer'])->name('admin_addofficer');
+		Route::get('/admin-editofficer', ['uses' => 'App\Http\Controllers\AdminController@editofficer'])->name('admin_editofficer');
+		Route::get('/admin-chatofficer', ['uses' => 'App\Http\Controllers\AdminController@chatofficer'])->name('admin_chatofficer');
 
-		Route::get('/admin-addcampaign', ['uses' => 'App\Http\Controllers\CampaignController@addcampaign'])->name('admin_addcampaign');
-		Route::get('/admin-ongoingcampaign', ['uses' => 'App\Http\Controllers\CampaignController@ongoingcampaign'])->name('admin_ongoingcampaign');
-		Route::get('/admin-removecampaign', ['uses' => 'App\Http\Controllers\CampaignController@removecampaign'])->name('admin_removecampaign');
+		Route::get('/admin-addcampaign', ['uses' => 'App\Http\Controllers\AdminController@addcampaign'])->name('admin_addcampaign');
+		Route::get('/admin-ongoingcampaign', ['uses' => 'App\Http\Controllers\AdminController@ongoingcampaign'])->name('admin_ongoingcampaign');
+		Route::get('/admin-removecampaign', ['uses' => 'App\Http\Controllers\AdminController@removecampaign'])->name('admin_removecampaign');
 	
 	
 	});
