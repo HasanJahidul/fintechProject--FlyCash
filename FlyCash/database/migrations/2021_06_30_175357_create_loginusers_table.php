@@ -15,12 +15,11 @@ class CreateLoginusersTable extends Migration
     {
         Schema::create('loginusers', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('name');
             $table->string('email')->unique();
             $table->string('password');
-            $table->string('phone')->unique();
-            $table->string('nid')->unique();
             $table->string('type');
-            $table->timestamp('last_loggedin')->nullable();
+            $table->timestamp('last_logged_in')->nullable();
             $table->timestamps();
         });
     }

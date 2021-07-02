@@ -20,9 +20,5 @@ class HomeController extends Controller
     {
         return view('adminDashboard');
     }
-     public function officer()
-    {
-        return view('officerDashboard');
-    }
 
 }

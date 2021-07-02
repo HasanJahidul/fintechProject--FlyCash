@@ -19,8 +19,8 @@
                         </div>
                     </p>
                     <label>{{ __('Agent Number') }}</label>
-                    <input type="text" name="account number" class="form-control{{ $errors->has('account number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
-                    @include('alerts.feedback', ['field' => 'account number'])
+                    <input type="text" name="number" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+                    @include('alerts.feedback', ['field' => 'number'])
 
                     <label>{{ __('Amount') }}</label>
                     <input type="text" name="amount" class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}" placeholder="{{ __('0.00') }}">
