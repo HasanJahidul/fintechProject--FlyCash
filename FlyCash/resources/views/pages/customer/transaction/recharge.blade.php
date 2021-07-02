@@ -12,6 +12,7 @@
                             <div class="block block-two"></div>
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
+                            <form method="post">
                             <a href="#">
                                 <img class="avatar" src="{{ asset('black') }}/img/icons/cashin.png" alt="sendmoney">
                                 </a>
@@ -19,8 +20,8 @@
                         </div>
                     </p>
                     <label>{{ __('Mobile Number') }}</label>
-                    <input type="text" name="number" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
-                    @include('alerts.feedback', ['field' => 'number'])
+                    <input type="text" name="mobile number" class="form-control{{ $errors->has('mobile number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+                    @include('alerts.feedback', ['field' => 'mobile number'])
 
                     <label>{{ __('Amount') }}</label>
                     <input type="text" name="amount" class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}" placeholder="{{ __('0.00') }}">
@@ -33,6 +34,7 @@
                 <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Send') }}</button>
                     </div>
+                    </form>
                 </div>
             </div>
     </div>

@@ -82,7 +82,8 @@
                                     <i class="tim-icons icon-lock-circle"></i>
                                 </div>
                             </div>
-                            <input type="password" name="password_confirmation" class="form-control" placeholder="{{ __('Confirm Password') }}">
+                            <input type="password" name="password_confirmation" class="form-control{{ $errors->has('password') ? ' is-invalid' : '' }}" placeholder="{{ __('Confirm Password') }}">
+                            @include('alerts.feedback', ['field' => 'password'])
                         </div>
                         <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
@@ -120,10 +121,10 @@
                             </div>
                             <select  type="text" name="type" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" placeholder="{{ __('Account Type') }}">
 
-                            <option value="{{ 'Account Type' }}" name= "admin" placeholder="{{ __('Account Type') }}">Admin</option>
-                            <option value="Admin" name= "user" placeholder="{{ __('Account Type') }}">User</option>
-                            <option value="{{ 'Account Type' }}" name= "agent" placeholder="{{ __('Account Type') }}">Agent</option>
-                            <option value="Admin" name= "communication_officer" placeholder="{{ __('Account Type') }}">Communication Officer</option>
+                            <option value="admin" name= "admin" placeholder="{{ __('Account Type') }}">Admin</option>
+                            <option value="customer" name= "customer" placeholder="{{ __('Account Type') }}">Customer</option>
+                            <option value="agent" name= "agent" placeholder="{{ __('Account Type') }}">Agent</option>
+                            <option value="officer" name= "communication_officer" placeholder="{{ __('Account Type') }}">Communication Officer</option>
                             </select>
                             @include('alerts.feedback', ['field' => 'type'])
                         </div>

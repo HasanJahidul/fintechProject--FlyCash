@@ -24,6 +24,9 @@ class CreateCustomersTable extends Migration
             $table->string('dob');
             //$table->src('photo');
             $table->string('balance');
+            $table->string('transaction_status');
+            $table->timestamp('openning_date')->nullable();
+          
             $table->timestamps();
         });
     }

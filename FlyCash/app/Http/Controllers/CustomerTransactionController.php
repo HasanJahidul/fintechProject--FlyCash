@@ -74,7 +74,7 @@ class CustomerTransactionController extends Controller
     {
         return view('pages.customer.transaction.sendmoney');
     }
-    public function sendmoneydone(TransactionRequest $req)
+    public function sendmoneyDone(TransactionRequest $req)
     {
         if($req-> amount >100)
         {

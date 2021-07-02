@@ -23,9 +23,10 @@ class AgentsTableSeeder extends Seeder
             'phone' => '01749549840',
             'balance' => '500',
             'dob' => '11-1-1995',
+            'transaction_status'=>'1',
             'type' => 'agent',
-
             'password' => '12345678',
+           
             'created_at' => now(),
             'updated_at' => now()
         ]);

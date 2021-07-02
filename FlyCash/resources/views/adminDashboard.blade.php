@@ -59,7 +59,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="{{ route('admin_removecampaignview') }}">
+                    <a href="{{ route('admin_removecampaign') }}">
 <img src="{{ asset('black') }}/img/admin/remove.png" alt="{{ __('Profile Photo') }}">
                         <h4>Remove Campaign</h4>
                         </a>
