@@ -20,6 +20,7 @@ Route::get('/', function () {
  Route::get('/customer-home', 'App\Http\Controllers\HomeController@customer')->name('customer_home')->middleware('checkSession');
  Route::get('/agent-home', 'App\Http\Controllers\HomeController@agent')->name('agent_home')->middleware('checkSession');
  Route::get('/admin-home', 'App\Http\Controllers\HomeController@admin')->name('admin_home')->middleware('checkSession');
+ Route::get('/officer-home', 'App\Http\Controllers\HomeController@officer')->name('officer_home')->middleware('checkSession');
 Route::get('/login', ['uses'=> 'App\Http\Controllers\LoginController@login'])->name('login');
 Route::post('/login', ['uses'=> 'App\Http\Controllers\LoginController@verify']);
 Route::get('/register', ['uses'=> 'App\Http\Controllers\RegisterController@register'])->name('register.index');
@@ -38,10 +39,12 @@ Route::group(['middleware' => 'checkSession'], function () {
 
 		Route::group(['middleware' => 'customer'], function () {
 		Route::get('/customer-addmoney', ['uses' => 'App\Http\Controllers\CustomerTransactionController@addmoney'])->name('customer_addmoney');
+		Route::post('/customer-addmoney', ['uses' => 'App\Http\Controllers\CustomerTransactionController@addmoneydone']);
 		Route::get('/customer-sendmoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@sendmoney'])->name('customer_sendmoney');
 		Route::get('/customer-cashout', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@cashout'])->name('customer_cashout');
 		Route::get('/customer-paybill', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@paybill'])->name('customer_paybill');
 		Route::get('/customer-recharge', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@recharge'])->name('customer_recharge');
+		Route::post('/customer-recharge', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@rechargedone']);
 		Route::get('/customer-transfermoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@transfermoney'])->name('customer_transfermoney');
 	
 	
@@ -74,10 +77,12 @@ Route::group(['middleware' => 'checkSession'], function () {
 		Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'App\Http\Controllers\PageController@notifications']);
 		Route::get('rtl', ['as' => 'pages.rtl', 'uses' => 'App\Http\Controllers\PageController@rtl']);
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
+
 	});
 	
 
 		Route::group(['middleware' => 'admin'], function () {
+
 		Route::get('/admin-adduser', ['uses' => 'App\Http\Controllers\AdminController@adduser'])->name('admin_adduser');
 		Route::get('/admin-edituser', ['uses' => 'App\Http\Controllers\AdminController@edituser'])->name('admin_edituser');
 		Route::get('/admin-transaction', ['uses' => 'App\Http\Controllers\AdminController@transaction'])->name('admin_transaction');
@@ -102,6 +107,70 @@ Route::group(['middleware' => 'checkSession'], function () {
 	
 	
 	});
+	Route::group(['middleware' => 'officer'], function () {
+
+		
+		Route::get('/pages/officer/agent/index','AgentController@index')->name('agent_index');
+
+		Route::get('/pages/officer/agent/edit/{id}', 'AgentController@edit')->name('agent_edit');
+		Route::post('/pages/officer/agent/edit/{id}', 'AgentController@update');
+
+		Route::get('/pages/officer/agent/delete/{id}', 'AgentController@delete');
+		Route::post('/pages/officer/agent/delete/{id}', 'AgentController@destroy')->name('agent_delete');
+
+//============================================End Agent Routing===================================================
+
+		Route::get('/pages/officer/customer/show','CustomerController@show')->name('customer_show');
+
+		Route::get('/pages/officer/customer/edit/{id}', 'CustomerController@edit')->name('customer_edit');
+		Route::post('/pages/officer/customer/edit/{id}', 'CustomerController@update');
+
+		Route::get('/pages/officer/customer/delete/{id}', 'CustomerController@delete');
+		Route::post('/pages/officer/customer/delete/{id}', 'CustomerController@destroy')->name('customer_delete');
+		
+//**********************************************End Customer Routing************************************************
+		
+		// 	Route::get('transection', ['as' => 'transection.tran', 'uses' => 'TranController@tran']);
+		// 	Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
+		// 	Route::get('notifications', ['as' => 'pages.notifications', 'uses' => 'PageController@notifications']);
+
+		//Route::resource('user', 'InfoController');
+
+		Route::get('/pages/officer/information','InfoController@index')->name('information_index');
+		Route::get('/pages/officer/information/details/{id}','InfoController@details')->name('information_details');
+
+		Route::get('/pages/officer/information/edit/{id}','InfoController@edit')->name('information_edit');
+		Route::post('/pages/officer/information/edit/{id}','InfoController@update')->name('information_update');
+		
+		Route::get('/pages/officer/information/delete/{id}','InfoController@delete');
+		Route::post('/pages/officer/information/delete/{id}','InfoController@destroy')->name('information_delete');
+
+		// Invoice pdf generator using dompdf
+		Route::get('/pages/officer/pdf/invoice/{id}','InfoController@pdf')->name('pdf.invoice');
+
+//==============================================================================================================
+//=============================================================================================================
+		//Route::resource('/pages/officer/profile','OfficerController');
+
+		Route::get('/pages/officer/profile/edit','OfficerController@edit')->name('profile_edit');		
+		Route::post('/pages/officer/profile/edit','OfficerController@update')->name('profile_update');
+
+		Route::get('/pages/officer/password/password_edit','OfficerController@PassEdit')->name('pass_edit');
+		Route::post('/pages/officer/password/password_edit','OfficerController@PassUpdate')->name('pass_update');
+
+		// Route::post('/pages/officer/profile','OfficerController@store')->name('image_insert');
+		// Route::post('/pages/officer/profile','OfficerController@update');
+
+//==============================================================================================================
+
+
+
+	});
+		
+	
+	
+	
+
 
 
 		Route::get('icons', ['as' => 'pages.icons', 'uses' => 'App\Http\Controllers\PageController@icons']);
