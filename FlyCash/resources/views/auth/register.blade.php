@@ -2,7 +2,8 @@
 
 @section('content')
     <div class="row">
-        <div class="col-md-5 ml-auto">
+  
+        <!-- <div class="col-md-5 ml-auto">
             <div class="info-area info-horizontal mt-5">
                 <div class="icon icon-warning">
                     <i class="tim-icons icon-wifi"></i>
@@ -36,14 +37,15 @@
                     </p>
                 </div>
             </div>
-        </div>
-        <div class="col-md-7 mr-auto">
-            <div class="card card-register card-white">
+        </div> -->
+        <div class="col-lg-4 col-md-6 ml-auto mr-auto">
+        
+            <div align="center" class="card card-register card-white">
                 <div class="card-header">
                 <img src="{{ asset('black') }}/img/flycash.png" alt="">
                     <h4 align= "center" class="card-title">{{ __('Registration') }}</h4>
                 </div>
-                <form class="form" method="post" action="{{ route('register') }}">
+                <form class="form" method="post">
                     @csrf
 
                     <div class="card-body">
@@ -85,7 +87,7 @@
                         <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"></i>
+                                    <i class="tim-icons icon-mobile"></i>
                                 </div>
                             </div>
                             <input type="digit" name="phone" class="form-control{{ $errors->has('phone') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}">
@@ -94,7 +96,7 @@
                         <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"></i>
+                                    <i class="tim-icons icon-badge"></i>
                                 </div>
                             </div>
                             <input type="text" name="nid" class="form-control{{ $errors->has('nid') ? ' is-invalid' : '' }}" placeholder="{{ __('NID Number') }}">
@@ -104,27 +106,32 @@
                         <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"></i>
+                                    <i class="tim-icons icon-calendar-60"></i>
                                 </div>
                             </div>
-                            <input type="date" name="dob" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" placeholder="{{ __('Phone Number') }}">
+                            <input type="date" name="dob" class="form-control{{ $errors->has('dob') ? ' is-invalid' : '' }}" placeholder="{{ __('Date of Birth') }}">
                             @include('alerts.feedback', ['field' => 'dob'])
                         </div>
                         <div class="input-group{{ $errors->has('phone') ? ' has-danger' : '' }}">
                             <div class="input-group-prepend">
                                 <div class="input-group-text">
-                                    <i class="tim-icons icon-lock-circle"></i>
+                                <i class="tim-icons icon-single-02"></i>
                                 </div>
                             </div>
                             <select  type="text" name="type" class="form-control{{ $errors->has('type') ? ' is-invalid' : '' }}" placeholder="{{ __('Account Type') }}">
 
                             <option value="{{ 'Account Type' }}" name= "admin" placeholder="{{ __('Account Type') }}">Admin</option>
-                            <option value="Admin" name= "admin" placeholder="{{ __('Account Type') }}">User</option>
-                            <option value="{{ 'Account Type' }}" name= "admin" placeholder="{{ __('Account Type') }}">Agent</option>
-                            <option value="Admin" name= "admin" placeholder="{{ __('Account Type') }}">Communication Officer</option>
+                            <option value="Admin" name= "user" placeholder="{{ __('Account Type') }}">User</option>
+                            <option value="{{ 'Account Type' }}" name= "agent" placeholder="{{ __('Account Type') }}">Agent</option>
+                            <option value="Admin" name= "communication_officer" placeholder="{{ __('Account Type') }}">Communication Officer</option>
                             </select>
                             @include('alerts.feedback', ['field' => 'type'])
                         </div>
+                        {{session('msg')}}
+                                        
+                        @foreach ($errors->all() as $err)
+                            {{$err}}
+                        @endforeach
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-primary btn-round btn-lg">{{ __('Get Started') }}</button>

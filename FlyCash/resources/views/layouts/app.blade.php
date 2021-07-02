@@ -20,23 +20,52 @@
         <link href="{{ asset('black') }}/css/black-dashboard.css?v=1.0.0" rel="stylesheet" />
         <link href="{{ asset('black') }}/css/theme.css" rel="stylesheet" />
     </head>
+    @csrf
     <body class="{{ $class ?? '' }}">
-        @auth()
+    
+    @if (session()->has('email') )
+        @if (session()->get('type')=='customer')
+            
             <div class="wrapper">
-                    @include('layouts.navbars.sidebar')
-                <div class="main-panel">
-                    @include('layouts.navbars.navbar')
+                        @include('layouts.navbars.sidebar')
+                    <div class="main-panel">
+                        @include('layouts.navbars.navbar')
 
-                    <div class="content">
-                        @yield('content')
+                        <div class="content">
+                            @yield('content')
+                        </div>
+
+                        @include('layouts.footer')
                     </div>
+                </div> 
+          @elseif (session()->get('type')=='agent')
+          <div class="wrapper">
+                        @include('layouts.navbars.agentSidebar')
+                    <div class="main-panel">
+                        @include('layouts.navbars.navbar')
 
-                    @include('layouts.footer')
-                </div>
-            </div>
-            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                @csrf
-            </form>
+                        <div class="content">
+                            @yield('content')
+                        </div>
+
+                        @include('layouts.footer')
+                    </div>
+                </div> 
+                @elseif (session()->get('type')=='admin')
+                <div class="wrapper">
+                        @include('layouts.navbars.adminSidebar')
+                    <div class="main-panel">
+                        @include('layouts.navbars.navbar')
+
+                        <div class="content">
+                            @yield('content')
+                        </div>
+
+                        @include('layouts.footer')
+                    </div>
+                </div> 
+            @endif
+            
         @else
             @include('layouts.navbars.navbar')
             <div class="wrapper wrapper-full-page">
@@ -49,7 +78,8 @@
                     @include('layouts.footer')
                 </div>
             </div>
-        @endauth
+        @endif
+        
         
         <script src="{{ asset('black') }}/js/core/jquery.min.js"></script>
         <script src="{{ asset('black') }}/js/core/popper.min.js"></script>

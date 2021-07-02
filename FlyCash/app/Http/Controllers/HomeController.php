@@ -4,23 +4,21 @@ namespace App\Http\Controllers;
 
 class HomeController extends Controller
 {
-    /**
-     * Create a new controller instance.
-     *
-     * @return void
-     */
-    public function __construct()
+    public function register()
     {
-        $this->middleware('auth');
+        return view('auth.register');
+    }
+    public function customer()
+    {
+        return view('customerDashboard');
+    }
+    public function agent()
+    {
+        return view('agentDashboard');
+    }
+    public function admin()
+    {
+        return view('adminDashboard');
     }
 
-    /**
-     * Show the application dashboard.
-     *
-     * @return \Illuminate\View\View
-     */
-    public function index()
-    {
-        return view('dashboard');
-    }
 }
