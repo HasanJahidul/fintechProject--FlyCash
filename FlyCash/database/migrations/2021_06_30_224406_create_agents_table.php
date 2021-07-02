@@ -22,8 +22,11 @@ class CreateAgentsTable extends Migration
             $table->string('phone')->unique();
             $table->string('nid')->unique();
             $table->string('dob');
-            //$table->src('photo');
             $table->string('balance');
+            $table->timestamp('openning_date')->nullable();
+            $table->string('transaction_status');
+            //$table->src('photo');
+            
             $table->timestamps();
         });
     }
