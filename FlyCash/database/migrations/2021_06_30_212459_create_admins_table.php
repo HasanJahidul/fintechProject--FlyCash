@@ -22,13 +22,11 @@ class CreateAdminsTable extends Migration
             $table->string('phone')->unique();
             $table->string('nid')->unique();
             $table->string('dob');
-            $table->timestamp('openning_date')->nullable();
             
 
             // $table->src('photo');
             // $table->src('campaign');
             $table->string('profit');
-           
             $table->timestamps();
         });
     }

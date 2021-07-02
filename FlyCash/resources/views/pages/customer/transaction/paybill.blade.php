@@ -19,10 +19,10 @@
                     </p>
                     <label>{{ __('Bill Number') }}</label>
                     <input type="text" name="billnumber" class="form-control{{ $errors->has('billnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('54789652') }}">
-                    @include('alerts.feedback', ['field' => 'bill number'])
+                    @include('alerts.feedback', ['field' => 'billnumber'])
 
                     <label>{{ __('Bill Type') }}</label>
-                    <select  type="text" name="bill type" class="form-control{{ $errors->has('bill type') ? ' is-invalid' : '' }}" placeholder="{{ __('Select BIll Type') }}">
+                    <select  type="text" name="billtype" class="form-control{{ $errors->has('billtype') ? ' is-invalid' : '' }}" placeholder="{{ __('Select BIll Type') }}">
 
                             <option value="{{ 'Bill Type' }}" name= "billtype" placeholder="{{ __('Bill Type') }}">Electricity</option>
                             <option value="Bill Type" name= "billtype" placeholder="{{ __('Bill Type') }}">Gas</option>
@@ -35,7 +35,7 @@
                             <option value="Bill Type" name= "billtype" placeholder="{{ __('Bill Type') }}">Credit Card</option>
                             <option value="{{ 'Bill Type' }}" name= "billtype" placeholder="{{ __('Bill Type') }}">Others</option>
                             </select>
-                            @include('alerts.feedback', ['field' => 'bill type'])
+                            @include('alerts.feedback', ['field' => 'billtype'])
 
                     <label>{{ __('Amount') }}</label>
                     <input type="text" name="amount" class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}" placeholder="{{ __('0.00') }}">

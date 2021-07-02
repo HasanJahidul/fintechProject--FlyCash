@@ -17,13 +17,13 @@ class CustomersTableSeeder extends Seeder
         DB::table('customers')->insert([
             'id' => 1,
             'name' => 'joy',
-            'email' => 'joy@gmail.com',
+            'email' => 'joy@gmail.com.com',
             'nid' => '0215561321',
             'phone' => '01749549840',
             'balance' => '5000',
             'dob' => '11-1-1995',
             'type' => 'customer',
-            'transaction_status'=>'1',
+
             'password' => '1234567',
             'created_at' => now(),
             'updated_at' => now()

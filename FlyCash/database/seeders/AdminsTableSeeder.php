@@ -21,12 +21,11 @@ class AdminsTableSeeder extends Seeder
             'id' => 3,
             'name' => 'Faiyaz Shahrear',
             'email' => 'shahrearfaiyaz@gmail.com',
-            'nid' => '021556231322',
+            'nid' => '021556231321',
             'phone' => '01749549840',
             'profit' => '500',
             'dob' => '11-1-1995',
             'type' => 'admin',
-           
             
 
 

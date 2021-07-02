@@ -33,7 +33,17 @@
                 </th>
               </tr>
             </thead>
-
+            <tbody>
+            @foreach ($transaction as $transaction)
+              <tr>
+                <th>{{ $transaction->phone }}</th>
+                <th>{{ $transaction->transaction_type }}</th>
+                <th>{{ $transaction->amount }}</th>
+                <th>{{ $transaction->	balance }}</th>
+                
+                <th><img src="{{asset('black/img/campaigns/' . $campaign->image) }}" width="100px;" height="100px;" alt="image"></th>
+              </tr>
+              @endforeach
 
             <tbody>
               <tr>

@@ -14,7 +14,6 @@ use App\Models\Loginuser;
 use App\Models\Customer;
 use App\Models\Admin;
 use App\Models\Agent;
-use App\Models\Officer;
 class LoginController extends Controller
 {
     // /*
@@ -61,20 +60,20 @@ class LoginController extends Controller
         {
             
            $type= $status->type;
-            
+
             if ($type == "customer")
             {
                 $customer = Customer::where('email',$req->email)
                 ->first();
-                //dd($customer);
                 $req->session()->put('email', $status->email);
-               
+                //dd($customer);
                 $req->session()->put('name', $customer->name);
                 $req->session()->put('password', $customer->password);
                 $req->session()->put('balance', $customer->balance);
                 //$req->session()->put('email', $customer->email);
                 $req->session()->put('type', $customer->type);
                 $req->session()->put('phone', $customer->phone);
+                $type=$req->session()->put('type', $customer->type);
                 //dd(session()->all());
                 return redirect("/customer-home");
 
@@ -111,22 +110,6 @@ class LoginController extends Controller
                 $type=$req->session()->put('type', $admin->type);
                 //dd(session()->all());
                 return redirect("/admin-home");
-
-            }elseif ($type == "officer")
-            {   
-                $officer = Officer::where('email',$req->email)
-                ->first();
-                
-                $req->session()->put('email', $officer->email);
-                $req->session()->put('name', $officer->name);
-                $req->session()->put('password', $officer->password);
-                $req->session()->put('profit', $officer->profit);
-                $req->session()->put('phone', $officer->phone); 
-                $req->session()->put('nid', $officer->nid);
-                $req->session()->put('dob', $officer->dob);
-                $type=$req->session()->put('type', $officer->type);
-                //dd(session()->all());
-                return redirect("/officer-home");
 
             }
             else{
