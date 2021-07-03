@@ -9,7 +9,7 @@
             <a href="#" class="simple-text logo-normal">{{ __('FlyCash Dashboard') }}</a>
         </div>
         <ul class="nav">
-            <li @if ($pageSlug == 'dashboarphpd') class="active " @endif>
+            <li @if ($pageSlug == 'dashboard') class="active " @endif>
                 <a href="{{ route('officer_home') }}">
                     <i class="tim-icons icon-bank"></i>
                     <p>{{ __('Dashboard') }}</p>
@@ -27,7 +27,7 @@
                     <ul class="nav pl-4">
                     
                         <li @if ($pageSlug == 'customerdetails') class="active " @endif>
-                            <a href="#">
+                            <a href="{{route('customer_show')}}">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ __('See Customer') }}</p>
                             </a>
@@ -102,12 +102,6 @@
                 <a href="#">
                     <i class="tim-icons icon-bell-55"></i>
                     <p>{{ __('Notifications') }}</p>
-                </a>
-            </li>
-            <li>
-                <a href="#">
-                    <i class="tim-icons icon-puzzle-10"></i>
-                    <p>{{ __('Table List') }}</p>
                 </a>
             </li>
         </ul>

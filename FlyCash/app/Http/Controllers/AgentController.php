@@ -1,16 +1,16 @@
 <?php
 
 namespace App\Http\Controllers;
-use App\Models\Officer;
+use App\Models\Agent;
 use Illuminate\Support\Facades\DB; //Import query builser 
 
 use Illuminate\Http\Request;
-
+//Ruhul Amin
 class AgentController extends Controller
 {
     public function index()
     {
-        $users= Officer::all(); //change Officer to (Agent)->tablename
+        $users= Agent::all(); //change Officer to (Agent)->tablename
 
         //$users = Officer::orderBy('id','DESC')->get(); //change Officer to (Agent)->tablename
 
@@ -20,15 +20,15 @@ class AgentController extends Controller
 
     public function edit($id){
 
-        $users= Officer::find($id);
+        $users= Agent::find($id);
 
         return view('pages.officer.agent.edit')->with('user', $users);
     }
 // ============================ End Edit ====================================
 
-    public function update(Request $req, Officer $id)
+    public function update(Request $req, Agent $id)
     {
-        $users = Officer::find($id);
+        $users = Agent::find($id);
         
         $users->name = $req->name;
         // if($users->password != $req->password){
@@ -51,7 +51,7 @@ class AgentController extends Controller
 
     public function delete($id){
   
-        $users = Officer::find($id); //change model name
+        $users = Agent::find($id); //change model name
         
         return view('pages.officer.agent.delete')->with('user', $users);
     }
@@ -59,7 +59,7 @@ class AgentController extends Controller
 
     public function destroy($id){
 
-        $users = Officer::find($id);
+        $users = Agent::find($id);
         $users->delete();
 
          return redirect()->route('agent_delete');

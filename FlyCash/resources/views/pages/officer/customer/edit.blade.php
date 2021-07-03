@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="title">{{ __('Edit Customer Information') }}</h4>
+                    <h3 class="title">{{ __('Edit Customer Information') }}</h3>
                 </div>
                 <form method="post" autocomplete="off">
                     <div class="card-body">
@@ -39,7 +39,6 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Save') }}</button>
-                        <a href="{{route('customer_show')}}">
                         <a href="{{route('customer_show')}}" class="btn btn-success">Back</a>
                         </a>
                     </div>

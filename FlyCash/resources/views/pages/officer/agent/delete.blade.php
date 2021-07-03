@@ -40,9 +40,14 @@
                             </div>
 
                             <div class="form-group">
-                                <label><h4>{{ __('Type => ') }}</h4></label>
+                               <label><h4>{{ __('Type => ') }}</h4></label>
                                 <label><h4>{{$user->type}}</h4></label>
-                            </div>
+                            </div> 
+
+                            <div class="form-group">
+                               <label><h4>{{ __('Balance => ') }}</h4></label>
+                                <label><h4>{{$user->balance}}</h4></label>
+                            </div> 
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Delete') }}</button>

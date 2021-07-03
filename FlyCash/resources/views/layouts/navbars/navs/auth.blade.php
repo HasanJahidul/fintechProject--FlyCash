@@ -30,13 +30,13 @@
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
                         <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Mike John responded to your email') }}</a>
+                            <a href="#" class="nav-item dropdown-item">{{ __('Jahid request need help') }}</a>
                         </li>
                         <li class="nav-link">
                             <a href="#" class="nav-item dropdown-item">{{ __('You have 5 more tasks') }}</a>
                         </li>
                         <li class="nav-link">
-                            <a href="#" class="nav-item dropdown-item">{{ __('Your friend Michael is in town') }}</a>
+                            <a href="#" class="nav-item dropdown-item">{{ __('Borno request') }}</a>
                         </li>
                         <li class="nav-link">
                             <a href="#" class="nav-item dropdown-item">{{ __('Another notification') }}</a>
@@ -49,7 +49,7 @@
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <div class="photo">
-                            <img src="{{ asset('black') }}/img/anime3.png" alt="{{ __('Profile Photo') }}">
+                            <img src="{{ asset('black') }}/img/officer/hi.png" alt="{{ __('Profile Photo') }}">
                         </div>
                         <b class="caret d-none d-lg-block d-xl-block"></b>
                         <p class="d-lg-none">{{ __('Log out') }}</p>

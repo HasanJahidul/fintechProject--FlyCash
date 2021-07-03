@@ -13,7 +13,9 @@
 
             <thead class=" text-primary">
               <tr>
-                
+                <th>
+                  Serial No
+                </th>
                 <th>
                   Account Number
                 </th>
@@ -26,29 +28,252 @@
                 <th class="text-center">
                   Current Balance
                 </th>
-                <th class="text-center">
+                <th>
                   Date
                 </th>
               </tr>
             </thead>
-            </tbody>
-            @foreach ($transaction as $transaction)
+
+
+            <tbody>
               <tr>
-              
-                <th>{{ $transaction->phone }}</th>
-                <th>{{ $transaction->transaction_type }}</th>
-                <th class="text-center">{{ $transaction->amount }}</th>
-                <th class="text-center">{{ $transaction->	balance }}</th>
-                <th class="text-center">{{ $transaction->		date }}</th>
+                <td>
+                  1
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
               </tr>
-              
-              @endforeach
-              </tbody>
+
+              <tr>
+                <td>
+                  2
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  3
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  4
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  5
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  6
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  7
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  8
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  9
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  10
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+              <tr>
+                <td>
+                  11
+                </td>
+                <td>
+                  01716653557
+                </td>
+                <td>
+                  Add Money
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td class="text-center">
+                  50,000.00
+                </td>
+                <td>
+                  02-05-21
+                </td>
+              </tr>
+
+            </tbody>
+
+
           </table>
         </div>
       </div>
     </div>
   </div>
   
-</div>
 @endsection

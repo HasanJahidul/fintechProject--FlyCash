@@ -60,7 +60,7 @@
             </tbody>
           </table>
         </div>
-      </div>s
+      </div>
     </div>
   </div>
   

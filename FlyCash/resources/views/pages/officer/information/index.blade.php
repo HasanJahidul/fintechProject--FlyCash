@@ -13,13 +13,12 @@
             <thead class=" text-primary">
               <tr>
                 <th>Id</th>
-                <th>Name</th>
                 <th>Email</th>
                 <th >Phone</th>
-                <th>NID</th>
-                <th>DOB</th>
-                <th>Type</th>
-                <th>Action</th>
+                <th>Trans Type</th>
+                <th>Amount</th>
+                <th>Balance</th>
+                <th>Action &nbsp &nbsp Button</th>
               </tr>
             </thead>
             <tbody>
@@ -27,12 +26,11 @@
             @foreach($userlist as $key => $user)
               <tr>
                 <td>{{$key+1}}</td>
-                <td>{{$user->name}}</td>
                 <td>{{$user->email}}</td>
                 <td>{{$user->phone}}</td>
-                <td>{{$user->nid}}</td>
-                <td>{{$user->dob}}</td>
-                <td>{{$user->type}}</td>
+                <td>{{$user->transaction_type}}</td>
+                <td>{{$user->amount}}</td>
+                <td>{{$user->balance}}</td>
                 
                 <td>
                   <a href="/pages/officer/information/details/{{$user->id}}">
@@ -45,7 +43,7 @@
                   </a> | 
                   <a href="/pages/officer/information/delete/{{$user->id}}">
                     <i class="tim-icons icon-trash-simple"></i>
-                      Delete |
+                      Delete
                   </a>
                 </td>
               </tr>

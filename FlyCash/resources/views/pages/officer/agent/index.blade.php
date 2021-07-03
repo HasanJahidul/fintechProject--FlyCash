@@ -18,8 +18,9 @@
                 <th>Phone</th>
                 <th>NID</th>
                 <th>Date Of Birth</th>
-                <th>type</th>
-                <th>Active</th>
+                <th>Type</th>
+                <th>Balance</th>
+                <th>Active &nbsp &nbsp Button</th>
               </tr>
             </thead>
             <tbody>
@@ -32,6 +33,7 @@
                   <td>{{$user->nid}}</td>
                   <td>{{$user->dob}}</td>
                   <td>{{$user->type}}</td>
+                  <td>{{$user->balance}}</td>
 
                   <td>
                     <a href="/pages/officer/agent/edit/{{$user->id}}">
@@ -42,6 +44,10 @@
                     <a href="/pages/officer/agent/delete/{{$user->id}}">
                       <i class="tim-icons icon-trash-simple"></i>
                         delete
+                    </a> |
+                    <a href="#">
+                      <i class="tim-icons icon-trash-simple"></i>
+                        Block
                     </a>
                   </td>
                 </tr>

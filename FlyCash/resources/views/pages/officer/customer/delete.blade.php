@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="title">{{ __('Customer Profile') }}</h4>
+                    <h3 class="title">{{ __('Customer Profile') }}</h3>
                 </div>
                 <form method="post"  autocomplete="off">
                     <div class="card-body">
@@ -14,33 +14,38 @@
                             @include('alerts.success')
                             
                             <div class="form-group">
-                                <label><h3>{{ __('Name => ') }}</h3></label>
-                                <label><h2>{{ $user->name }}</h2></label>
+                                <label><h4>{{ __('Name => ') }}</h4></label>
+                                <label><h4>{{ $user->name }}</h4></label>
                             </div>
 
                             <div class="form-group{{ $errors->has('email') ? ' has-danger' : '' }}">
-                                <label><h3>{{ __('Email address => ') }}</h3></label>
-                                <label><h2>{{ $user->email }}</h2></label>
+                                <label><h4>{{ __('Email address => ') }}</h4></label>
+                                <label><h4>{{ $user->email }}</h4></label>
                             </div>
 
                             <div class="form-group">
-                                <label><h3>{{ __('Phone No => ') }}</h3></label>
-                                <label><h2>{{ $user->phone }}</h2></label>
+                                <label><h4>{{ __('Phone No => ') }}</h4></label>
+                                <label><h4>{{ $user->phone }}</h4></label>
                             </div>
 
                             <div class="form-group">
-                                <label><h3>{{ __('NID No => ') }}</h3></label>
-                                <label><h2>{{ $user->nid }}</h2></label>
+                                <label><h4>{{ __('NID No => ') }}</h4></label>
+                                <label><h4>{{ $user->nid }}</h4></label>
                             </div>
 
                             <div class="form-group">
-                                <label><h3>{{ __('DOB => ') }}</h3></label>
-                                <label><h2>{{ $user->dob }}</h2></label>
+                                <label><h4>{{ __('DOB => ') }}</h4></label>
+                                <label><h4>{{ $user->dob }}</h4></label>
                             </div>
 
                             <div class="form-group">
-                                <label><h3>{{ __('Type => ') }}</h3></label>
-                                <label><h2>{{ $user->type }}</h2></label>
+                                <label><h4>{{ __('Type => ') }}</h4></label>
+                                <label><h4>{{ $user->type }}</h4></label>
+                            </div>
+
+                            <div class="form-group">
+                                <label><h4>{{ __('Balance => ') }}</h4></label>
+                                <label><h4>{{ $user->balance }}</h4></label>
                             </div>
                     </div>
                     <div class="card-footer">

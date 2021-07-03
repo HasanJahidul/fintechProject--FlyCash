@@ -26,9 +26,9 @@ class TransactionRequest extends FormRequest
     {
         return [
             
-            
-            'accountnumber' => 'min:11|numeric',
-            'amount' => 'required|numeric',
+            'mobile number' => 'required|min:11|numeric',
+            'account number' => 'required|min:11|numeric',
+            'amount' => 'required|max:6|numeric',
             'password' => 'required',
             
         ];
