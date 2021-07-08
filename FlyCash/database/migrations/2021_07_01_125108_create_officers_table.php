@@ -22,7 +22,7 @@ class CreateOfficersTable extends Migration
             $table->string('nid');
             $table->string('dob');
             $table->string('type');
-            $table->string('image')->nullable();
+            $table->string('image');
             $table->timestamps();
         });
     }

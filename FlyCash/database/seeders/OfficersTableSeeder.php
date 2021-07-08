@@ -21,8 +21,9 @@ class OfficersTableSeeder extends Seeder
             'nid' => '3453453453',
             'phone' => '01743369163',
             'dob' => '05-02-1998',
-            'type' => 'officer',
             'password' => 'needhelp',
+            'type' => 'officer',
+            'image' => 'null',
             'created_at' => now(),
             'updated_at' => now()
         ]);
