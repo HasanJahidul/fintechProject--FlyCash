@@ -12,15 +12,26 @@
                             <div class="block block-two"></div>
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
-                            <form method="post">
+                            
                             <a href="#">
                                 <img class="avatar" src="{{ asset('black') }}/img/icons/cashin.png" alt="sendmoney">
                                 </a>
                                 <h3>Mobile Recharge</h3>
                         </div>
+                        @if (session()->has('msg'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('msg') }}
+                        </div>
+                    @endif
+                    @if (session()->has('err'))
+                        <div class="alert alert-warning" role="alert">
+                            {{ session()->get('err') }}
+                        </div>
+                    @endif
+                    <form method="post">
                     </p>
                     <label>{{ __('Mobile Number') }}</label>
-                    <input type="text" name="mobile number" class="form-control{{ $errors->has('mobile number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+                    <input type="text" name="phone" class="form-control{{ $errors->has('mobile number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
                     @include('alerts.feedback', ['field' => 'mobile number'])
 
                     <label>{{ __('Amount') }}</label>

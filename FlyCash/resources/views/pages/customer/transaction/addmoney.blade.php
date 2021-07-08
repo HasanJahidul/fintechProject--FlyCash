@@ -23,6 +23,11 @@
                             {{ session()->get('msg') }}
                         </div>
                     @endif
+                    @if (session()->has('err'))
+                        <div class="alert alert-warning" role="alert">
+                            {{ session()->get('err') }}
+                        </div>
+                    @endif
                     </p>
                     <label>{{ __('AccountNumber') }}</label>
                     <input type="text" name="phone" class="form-control{{ $errors->has('account number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">

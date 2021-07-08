@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
 use App\Models\Officer;
+use Validator;
+use App\Http\Requests\EditProfileRequest;
 use Illuminate\Support\Facades\DB; //Import query builser 
 
 class CustomerController extends Controller
@@ -65,4 +67,49 @@ class CustomerController extends Controller
          return redirect()->route('customer_delete');
     }
 // ============================ End Destroy ====================================
+
+    public function editCustomer(){
+
+        return view('profile.edit');
+
+
+    }
+    public function editCustomerdone(){
+
+        return view('profile.edit');
+
+
+    }
+    public function changeCustomerPassword(){
+
+        return view('pages.customer.profile.passwordChange');
+    }
+    public function editCustomerProfile(){
+
+        return view('pages.customer.profile.edit');
+    }
+    public function changeCustomerPasswordDone(EditProfileRequest $req){
+
+        if ($req->session()->get('password')==$req-> old_password)
+        {
+            if ($req->password== $req->password_confirmation)
+            {
+                dd($req);
+                $email=$req->session()->get('email');
+                $customer = Customer::where('email',$email)
+                ->first();
+                $customer->password = $req->password;
+                $customer->save();
+                return back()->with('msg','Password Changed') ;
+
+            }else{
+                return back()->with('msg','New password and confirm password does not match') ;
+            }
+
+        }else{
+            return back()->with('msg','Current Password does not match') ;
+                    
+        }
+
+    }
 }

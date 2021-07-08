@@ -4,7 +4,10 @@
     <div class="d-flex justify-content-center">
         <div class="col-md-4">
             <div class="card card-user">
+            <form class="form" method="post">
+                @csrf
                 <div class="card-body">
+                
                     <p class="card-text">
                         <div class="author">
                             <div class="block block-one"></div>
@@ -86,6 +89,7 @@
                 <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Add User') }}</button>
                     </div>
+                    </form>
                 </div>
             </div>
     </div>

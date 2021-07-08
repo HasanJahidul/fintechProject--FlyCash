@@ -1,136 +1,77 @@
 @extends('layouts.app', ['page' => __('Tables'), 'pageSlug' => 'tables'])
 
 @section('content')
+
 <div class="row">
   <div class="col-md-12">
     <div class="card ">
+    @if (session()->has('msg'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('msg') }}
+                        </div>
+                    @endif
       <div class="card-header">
-        <h4 class="card-title"> Block User</h4>
+        <h3 class="card-title"> block User</h3>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table tablesorter " id="">
+
             <thead class=" text-primary">
               <tr>
+
                 <th>
-                  Name
+                   Name
                 </th>
                 <th>
-                  Account Number
+                   Email
+                </th>
+               
+                <th >
+                  Phone
+                </th>
+                <th >
+                  Nid
                 </th>
                 <th>
-                  Complain
-                </th>
-                <th class="text-center">
-                  Status
+                  Action
                 </th>
               </tr>
             </thead>
-            <tbody>
-              <tr>
-                <td>
-                  Ahmed Ashik
-                </td>
-                <td>
-                  +0183732832883
-                </td>
-                <td>
-                  Yes
-                </td>
-                <td class="text-center">
-                  Blocked
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Abid Hasan
-                </td>
-                <td>
-                  +0187544345
-                </td>
-                <td>
-                  No
-                </td>
-                <td class="text-center">
-                  Running
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Sage Rodriguez
-                </td>
-                <td>
-                  +9098866689
-                </td>
-                <td>
-                  No
-                </td>
-                <td class="text-center">
-                  Running
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Philip Chaney
-                </td>
-                <td>
-                  +07855457878
-                </td>
-                <td>
-                  Yes
-                </td>
-                <td class="text-center">
-                  Blocked
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Doris Greene
-                </td>
-                <td>
-                  +0909897876
-                </td>
-                <td>
-                  No
-                </td>
-                <td class="text-center">
-                  Running
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Mason Porter
-                </td>
-                <td>
-                  +886677546
-                </td>
-                <td>
-                  No
-                </td>
-                <td class="text-center">
-                  Running
-                </td>
-              </tr>
-              <tr>
-                <td>
-                  Jon Porter
-                </td>
-                <td>
-                  +987867577
-                </td>
-                <td>
-                  Yes
-                </td>
-                <td class="text-center">
-                  Blocked
-                </td>
-              </tr>
             </tbody>
+            @foreach ($customers as $customers)
+   
+              <tr>
+
+              <th>{{ $customers->name }}</th>
+              <th>{{ $customers->email }}</th>
+
+                <th>{{ $customers->phone }}</th>
+                <th>{{ $customers->nid }}</th>
+                <th> 
+                
+                <?php
+                  if ($customers->transaction_status=="unblocked"){
+                    ?>
+                     <a href="{{ url ('admin-blockeduser/'.$customers->email )}}" class="btn btn-primary btn-sm">Block</a> 
+                   <?php
+                  }if ($customers->transaction_status=="blocked"){
+                    ?>
+                    <a href="{{ url ('admin-unblockuser/'.$customers->email )}}" class="btn btn-primary btn-sm">Unblock</a>
+                    <?php  
+                }
+                ?>
+                </th>
+                
+              </tr>
+
+              @endforeach
+              </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  
+
 </div>
 @endsection

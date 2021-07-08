@@ -16,9 +16,20 @@
                                 </a>
                                 <h3>Pay Bill</h3>
                         </div>
+                        @if (session()->has('msg'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('msg') }}
+                        </div>
+                    @endif
+                    @if (session()->has('err'))
+                        <div class="alert alert-warning" role="alert">
+                            {{ session()->get('err') }}
+                        </div>
+                    @endif
+                    <form method="post">
                     </p>
                     <label>{{ __('Bill Number') }}</label>
-                    <input type="text" name="billnumber" class="form-control{{ $errors->has('billnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('54789652') }}">
+                    <input type="text" name="phone" class="form-control{{ $errors->has('billnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('54789652') }}">
                     @include('alerts.feedback', ['field' => 'bill number'])
 
                     <label>{{ __('Bill Type') }}</label>
@@ -48,6 +59,7 @@
                 <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Pay Bill') }}</button>
                     </div>
+                    </form>
                 </div>
             </div>
     </div>

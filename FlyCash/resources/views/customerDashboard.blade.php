@@ -2,79 +2,26 @@
 
 @section('content')
 @csrf
-    <div class="row">
+    
+<div class="row">
         <div class="col-12">
             <div class="card card-chart">
                 <div class="card-header ">
                     <div class="row">
                         <div class="col-sm-6 text-left">
-                            <h2 class="card-title">Hello {{session('name')}}</h2>
-                            <h4 class="card-title">Balance : {{session('balance')}}</h4>
+                            <h2 class="card-title">DASHBOARD</h2>
+                            <h4 class="card-title">Balance :{{session('balance')}}</h4>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </div>
-    <div class="row">
-        <div class="col-12">
-        <div class="card card-chart">
-        <div class="card-header ">
-        <div class="row">
-                        <div class="col-sm-6 text-left">
-                            <h2 class="card-title">Campaigns</h2>
-                        </div>
-                    </div>
-        <div class="card-body all-icons">
-        <div class="row">
-
-        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-            <div class="font-icon-detail">
-                <div class="d-flex justify-content-center">
-                    <div class="pic">
-                    <a href="{{ route('admin_addcampaign') }}">
-                        <img src="{{ asset('black') }}/img/admin/campaign.png">
-                        <div class="picname">
-                        <h4>Add Campaign</h4>
-                        </div>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-            <div class="font-icon-detail">
-                <div class="d-flex justify-content-center">
-                    <div class="pic">
-                    <a href="{{ route('admin_ongoingcampaign') }}">
-<img src="{{ asset('black') }}/img/admin/ongoingCampaign.png" alt="{{ __('Profile Photo') }}">
-                        <h4>Ongoing Campaign</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-
-        <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
-            <div class="font-icon-detail">
-                <div class="d-flex justify-content-center">
-                    <div class="pic">
-                    <a href="{{ route('admin_removecampaign') }}">
-<img src="{{ asset('black') }}/img/admin/remove.png" alt="{{ __('Profile Photo') }}">
-                        <h4>Remove Campaign</h4>
-                        </a>
-                    </div>
-                </div>
-            </div>
-        </div>
-        
+    </div>       
             
             
-                </div>
-            </div>
-        </div>
-    </div>
+                
 <div class="row">
+
         <div class="col-12">
         <div class="card card-chart">
         <div class="card-header ">
@@ -83,9 +30,16 @@
                             <h2 class="card-title">Transaction</h2>
                         </div>
                     </div>
-        <div class="card-body all-icons">
+                    @if (session()->has('transaction'))
+                        <div class="alert alert-warning" role="alert">
+                            {{ session()->get('transaction') }}
+                            
+                        </div>
+                      
+                    @endif
+        <div class="card-body all-icons"></div>
         <div class="row">
-
+       
         <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
@@ -98,7 +52,9 @@
                         </a>
                     </div>
                 </div>
+                
             </div>
+            
         </div>
 
         <div class="font-icon-list col-lg-2 col-md-3 col-sm-4 col-xs-6 col-xs-6">
@@ -210,10 +166,10 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="#">
-                        <img src="{{ asset('black') }}/img/icons/comingsoon.png">
+                    <a href="{{ route('customer_donation') }}">
+                        <img src="{{ asset('black') }}/img/icons/donate.png">
                         <div class="picname">
-                        <h4>Coming Soon</h4>
+                        <h4>Donation</h4>
                         </div>
                         </a>
                     </div>
@@ -225,10 +181,11 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                    <a href="#">
-                        <img src="{{ asset('black') }}/img/icons/comingsoon.png">
+                    <a href="{{ route('admin_ongoingcampaign') }}">
+                        <img src="{{ asset('black') }}/img/admin/ongoingCampaign.png" alt="{{ __('Profile Photo') }}">
+                       
                         <div class="picname">
-                        <h4>Coming Soon</h4>
+                        <h4>Ongoing Campaign</h4>
                         </div>
                         </a>
                     </div>

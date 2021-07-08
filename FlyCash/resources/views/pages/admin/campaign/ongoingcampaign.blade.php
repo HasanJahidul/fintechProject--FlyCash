@@ -5,7 +5,7 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title"> Remove Campaign</h4>
+        <h4 class="card-title"> Ongoing Campaign</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
@@ -21,41 +21,21 @@
                 <th>
                   End Date
                 </th>
-                <th class="text-center">
-                  Status
+                <th>
+                  Portfolio
                 </th>
               </tr>
             </thead>
             <tbody>
+            @foreach ($campaigns as $campaign)
               <tr>
-                <td>
-                  Independence Day Campaign
-                </td>
-                <td>
-                  5/5/2021
-                </td>
-                <td>
-                15/5/2021
-
-                </td>
-                <td class="text-center">
-                  Successfully running
-                </td>
+                <th>{{ $campaign->title }}</th>
+                <th>{{ $campaign->sdate }}</th>
+                <th>{{ $campaign->edate }}</th>
+                <th><img src="{{asset('black/img/campaigns/' . $campaign->image) }}" width="100px;" height="100px;" alt="image"></th>
               </tr>
-              <tr>
-                <td>
-                  New Year Campaign
-                </td>
-                <td>
-                5/5/2021
-                </td>
-                <td>
-                5/5/2021
-                </td>
-                <td class="text-center">
-                  Running
-                </td>
-              </tr>
+              @endforeach
+              
               
             </tbody>
           </table>
