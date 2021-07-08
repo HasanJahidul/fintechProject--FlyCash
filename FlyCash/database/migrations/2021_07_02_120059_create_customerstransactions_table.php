@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateAgentstransactionsTable extends Migration
+class CreateCustomerststransactionsTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,8 +13,8 @@ class CreateAgentstransactionsTable extends Migration
      */
     public function up()
     {
-        Schema::create('agentstransactions', function (Blueprint $table) {
-            $table->string('email');
+        Schema::create('customerstransactions', function (Blueprint $table) {
+            $table->string('email')->unique();
             $table->string('phone');
             $table->string('transaction_type');
             $table->string('amount');
@@ -32,6 +32,6 @@ class CreateAgentstransactionsTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('agentstransactions');
+        Schema::dropIfExists('customerststransactions');
     }
 }

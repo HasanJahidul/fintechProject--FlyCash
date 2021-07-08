@@ -16,13 +16,24 @@
                                 </a>
                                 <h3>Pay Bill</h3>
                         </div>
+                        @if (session()->has('msg'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('msg') }}
+                        </div>
+                    @endif
+                    @if (session()->has('err'))
+                        <div class="alert alert-warning" role="alert">
+                            {{ session()->get('err') }}
+                        </div>
+                    @endif
+                    <form method="post">
                     </p>
                     <label>{{ __('Bill Number') }}</label>
-                    <input type="text" name="billnumber" class="form-control{{ $errors->has('billnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('54789652') }}">
-                    @include('alerts.feedback', ['field' => 'billnumber'])
+                    <input type="text" name="phone" class="form-control{{ $errors->has('billnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('54789652') }}">
+                    @include('alerts.feedback', ['field' => 'bill number'])
 
                     <label>{{ __('Bill Type') }}</label>
-                    <select  type="text" name="billtype" class="form-control{{ $errors->has('billtype') ? ' is-invalid' : '' }}" placeholder="{{ __('Select BIll Type') }}">
+                    <select  type="text" name="bill type" class="form-control{{ $errors->has('bill type') ? ' is-invalid' : '' }}" placeholder="{{ __('Select BIll Type') }}">
 
                             <option value="{{ 'Bill Type' }}" name= "billtype" placeholder="{{ __('Bill Type') }}">Electricity</option>
                             <option value="Bill Type" name= "billtype" placeholder="{{ __('Bill Type') }}">Gas</option>
@@ -35,7 +46,7 @@
                             <option value="Bill Type" name= "billtype" placeholder="{{ __('Bill Type') }}">Credit Card</option>
                             <option value="{{ 'Bill Type' }}" name= "billtype" placeholder="{{ __('Bill Type') }}">Others</option>
                             </select>
-                            @include('alerts.feedback', ['field' => 'billtype'])
+                            @include('alerts.feedback', ['field' => 'bill type'])
 
                     <label>{{ __('Amount') }}</label>
                     <input type="text" name="amount" class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}" placeholder="{{ __('0.00') }}">
@@ -48,6 +59,7 @@
                 <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Pay Bill') }}</button>
                     </div>
+                    </form>
                 </div>
             </div>
     </div>

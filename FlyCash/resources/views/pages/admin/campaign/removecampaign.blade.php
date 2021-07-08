@@ -1,5 +1,4 @@
 @extends('layouts.app', ['page' => __('Tables'), 'pageSlug' => 'tables'])
-
 @section('content')
 <div class="row">
   <div class="col-md-12">
@@ -39,20 +38,20 @@
 
                 <th><img src="{{asset('black/img/campaigns/' . $campaign->image) }}" width="100px;" height="100px;" alt="image"></th>
                 <th>
-                
+
                 <a href="{{ url ('admin-removecampaign/'.$campaign->id )}}" class="btn btn-primary btn-sm">Remove</a> 
-                
+
                     </th>
               </tr>
               @endforeach
-              
-              
+
+
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  
+
 </div>
 @endsection

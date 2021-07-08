@@ -18,7 +18,7 @@
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
                             <a href="#">
-                                <img class="avatar" src="{{ asset('black') }}/img/admin/campaign.png" alt="sendmoney">
+                                <img class="avatar" src="{{ asset('black') }}/img/admin/campaign.png" alt="addcampaign">
                                 </a>
                                 <h3>Add Campaign</h3>
                                 @if (session()->has('msg'))

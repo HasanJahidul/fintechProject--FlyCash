@@ -89,7 +89,7 @@
             <div class="font-icon-detail">
                 <div class="d-flex justify-content-center">
                     <div class="pic">
-                        <a href="#">
+                        <a href="{{ route('agent_transactionlist') }}">
                         <img src="{{ asset('black') }}/img/transaction.png" alt="{{ __('Profile Photo') }}">
                         <h4>Transaction List</h4>
                         </a>

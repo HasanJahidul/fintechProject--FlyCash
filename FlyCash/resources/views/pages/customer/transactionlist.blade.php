@@ -38,8 +38,8 @@
                 <th>{{ $transaction->phone }}</th>
                 <th>{{ $transaction->transaction_type }}</th>
                 <th class="text-center">{{ $transaction->amount }}</th>
-                <th class="text-center">{{ $transaction->	balance }}</th>
-                <th class="text-center">{{ $transaction->		date }}</th>
+                <th class="text-center">{{ $transaction-> balance }}</th>
+                <th class="text-center">{{ $transaction->   date }}</th>
               </tr>
               
               @endforeach

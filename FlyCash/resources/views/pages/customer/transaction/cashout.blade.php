@@ -17,10 +17,21 @@
                                 </a>
                                 <h3>Cash out</h3>
                         </div>
+                        @if (session()->has('msg'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('msg') }}
+                        </div>
+                    @endif
+                    @if (session()->has('err'))
+                        <div class="alert alert-warning" role="alert">
+                            {{ session()->get('err') }}
+                        </div>
+                    @endif
+                    <form method="post">
                     </p>
                     <label>{{ __('Agent Number') }}</label>
-                    <input type="text" name="number" class="form-control{{ $errors->has('number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
-                    @include('alerts.feedback', ['field' => 'number'])
+                    <input type="text" name="phone" class="form-control{{ $errors->has('accountnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+                    @include('alerts.feedback', ['field' => 'accountnumber'])
 
                     <label>{{ __('Amount') }}</label>
                     <input type="text" name="amount" class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}" placeholder="{{ __('0.00') }}">
@@ -33,6 +44,7 @@
                 <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Cash Out') }}</button>
                     </div>
+                    </form>
                 </div>
             </div>
     </div>
