@@ -1,8 +1,7 @@
 <?php
 
 namespace App\Http\Controllers;
-<<<<<<< HEAD
-=======
+
 use App\Models\campaign;
 use Validator;
 use App\Models\Agent;
@@ -14,7 +13,7 @@ use App\Models\customerstransactions;
 use App\Http\Requests\RegisterRequest;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Customer;
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
+
 
 use Illuminate\Http\Request;
 
@@ -140,8 +139,7 @@ class AdminController extends Controller
     {
         return view('pages.admin.user.adduser');
     }
-<<<<<<< HEAD
-=======
+
     public function insertuser (RegisterRequest $req)
     {
         $customer = new Customer;
@@ -172,7 +170,7 @@ class AdminController extends Controller
     }
 
 
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
+
     public function edituser()
     {
         $customers = Customer ::all();

@@ -43,7 +43,6 @@ Route::group(['middleware' => 'checkSession'], function () {
 	//Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 
 		Route::group(['middleware' => 'customer'], function () {
-<<<<<<< HEAD
 		Route::get('/customer-addmoney', ['uses' => 'App\Http\Controllers\CustomerTransactionController@addmoney'])->name('customer_addmoney');
 		Route::post('/customer-addmoney', ['uses' => 'App\Http\Controllers\CustomerTransactionController@addmoneydone']);
 		Route::get('/customer-sendmoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@sendmoney'])->name('customer_sendmoney');
@@ -53,47 +52,6 @@ Route::group(['middleware' => 'checkSession'], function () {
 		Route::post('/customer-recharge', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@rechargedone']);
 		Route::get('/customer-transfermoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@transfermoney'])->name('customer_transfermoney');
 	
-=======
-
-			Route::group(['middleware' => 'transCheck'], function () {
-				Route::get('/customer-addmoney', ['uses' => 'App\Http\Controllers\CustomerTransactionController@addmoney'])->name('customer_addmoney');
-				Route::post('/customer-addmoney', ['uses' => 'App\Http\Controllers\CustomerTransactionController@addmoneydone']);
-
-			Route::get('/customer-sendmoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@sendmoney'])->name('customer_sendmoney');
-			Route::post('/customer-sendmoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@sendmoneydone']);
-
-			Route::get('/customer-cashout', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@cashout'])->name('customer_cashout');
-			Route::post('/customer-cashout', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@cashoutdone']);
-
-			Route::get('/customer-paybill', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@paybill'])->name('customer_paybill');
-			Route::post('/customer-paybill', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@paybilldone']);
-
-			Route::get('/customer-recharge', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@recharge'])->name('customer_recharge');
-			Route::post('/customer-recharge', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@rechargedone']);
-
-			Route::get('/customer-donate', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@donate'])->name('customer_donation');
-			Route::post('/customer-donate', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@donatedone']);
-
-			Route::get('/customer-transfermoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@transfermoney'])->name('customer_transfermoney');
-			Route::post('/customer-transfermoney', [ 'uses' => 'App\Http\Controllers\CustomerTransactionController@transfermoneydone']);
-
-
-			});
-
-			
-
-			
-		
-			Route::get('/profile', [ 'uses' => 'App\Http\Controllers\CustomerController@editCustomer'])->name('profile_edit');
-
-		//Route::get('/profile', [ 'uses' => 'App\Http\Controllers\CustomerController@editCustomer'])->name('profile_edit')->middleware('checkSession');
-		Route::get('/change-password', [ 'uses' => 'App\Http\Controllers\CustomerController@changeCustomerPassword'])->name('profile_passwordChange');
-		Route::get('/profile-edit', [ 'uses' => 'App\Http\Controllers\CustomerController@editCustomerProfile'])->name('customer_profile_edit');
-		Route::put('/changed-password', [ 'uses' => 'App\Http\Controllers\CustomerController@changeCustomerPasswordDone']);
-
-		
-});
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
 	
 	});
 		Route::group(['middleware' => 'agent'], function () {
@@ -130,13 +88,6 @@ Route::group(['middleware' => 'checkSession'], function () {
 
 		Route::group(['middleware' => 'admin'], function () {
 
-<<<<<<< HEAD
-		Route::get('/admin-adduser', ['uses' => 'App\Http\Controllers\AdminController@adduser'])->name('admin_adduser');
-		Route::get('/admin-edituser', ['uses' => 'App\Http\Controllers\AdminController@edituser'])->name('admin_edituser');
-		Route::get('/admin-transaction', ['uses' => 'App\Http\Controllers\AdminController@transaction'])->name('admin_transaction');
-		Route::get('/admin-discount', [ 'uses' => 'App\Http\Controllers\AdminController@discount'])->name('admin_discount');
-		Route::get('/admin-blockuser', ['uses' => 'App\Http\Controllers\AdminController@blockuser'])->name('admin_blockuser');
-=======
 			Route::get('/admin-adduser', ['uses' => 'App\Http\Controllers\AdminController@adduser'])->name('admin_adduser');
 			Route::post('/admin-adduser', ['uses' => 'App\Http\Controllers\AdminController@insertuser'])->name('admin_insertuser');
 	
@@ -174,7 +125,6 @@ Route::group(['middleware' => 'checkSession'], function () {
 	});
 	Route::get('/admin-ongoingcampaign', ['uses' => 'App\Http\Controllers\AdminController@ongoingcampaign'])->name('admin_ongoingcampaign');
 	Route::group(['middleware' => 'officer'], function () {
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
 
 		
 		Route::get('/pages/officer/agent/index','App\Http\Controllers\AgentController@index')->name('agent_index');
@@ -185,27 +135,33 @@ Route::group(['middleware' => 'checkSession'], function () {
 		Route::get('/pages/officer/agent/delete/{id}', 'App\Http\Controllers\AgentController@delete');
 		Route::post('/pages/officer/agent/delete/{id}', 'App\Http\Controllers\AgentController@destroy')->name('agent_delete');
 
-<<<<<<< HEAD
 		Route::get('/admin-addcampaign', ['uses' => 'App\Http\Controllers\AdminController@addcampaign'])->name('admin_addcampaign');
 		Route::get('/admin-ongoingcampaign', ['uses' => 'App\Http\Controllers\AdminController@ongoingcampaign'])->name('admin_ongoingcampaign');
 		Route::get('/admin-removecampaign', ['uses' => 'App\Http\Controllers\AdminController@removecampaign'])->name('admin_removecampaign');
 	
 	
 	});
+
+
+//######################################Start Officer Part#######################################
+
 	Route::group(['middleware' => 'officer'], function () {
 
 		
 		Route::get('/pages/officer/agent/index','App\Http\Controllers\AgentController@index')->name('agent_index');
-=======
 //============================================End Agent Routing===================================================
 
-		Route::get('/pages/officer/customer/show','App\Http\Controllers\CustomerController@show')->name('customer_show');
+		Route::get('/officer-customer/show','App\Http\Controllers\CustomerController@show')->name('customer_show');
 
 		Route::get('/pages/officer/customer/edit/{id}', 'App\Http\Controllers\CustomerController@edit')->name('customer_edit');
 		Route::post('/pages/officer/customer/edit/{id}', 'App\Http\Controllers\CustomerController@update');
 
-		Route::get('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@delete');
-		Route::post('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@destroy')->name('customer_delete');
+		Route::get('/officer-blockeduser/{email}', ['uses' => 'App\Http\Controllers\CustomerTransactionController@userblocked'])->name('admin_userblocked');
+		Route::get('/officer-unblockuser/{email}', ['uses' => 'App\Http\Controllers\CustomerTransactionController@userunblocked'])->name('admin_userunblocked');
+	
+
+		// Route::get('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@delete');
+		// Route::post('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@destroy')->name('customer_delete');
 		
 //**********************************************End Customer Routing************************************************
 		
@@ -241,7 +197,6 @@ Route::group(['middleware' => 'checkSession'], function () {
 		// Route::post('/pages/officer/profile','OfficerController@update');
 
 //==============================================================================================================
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
 
 		Route::get('/pages/officer/agent/edit/{id}', 'App\Http\Controllers\AgentController@edit')->name('agent_edit');
 		Route::post('/pages/officer/agent/edit/{id}', 'App\Http\Controllers\AgentController@update');
@@ -294,18 +249,8 @@ Route::group(['middleware' => 'checkSession'], function () {
 		// Route::post('/pages/officer/profile','App\Http\Controllers\OfficerController@store')->name('image_insert');
 		// Route::post('/pages/officer/profile','App\Http\Controllers\OfficerController@update');
 
-//==============================================================================================================
-
 	});
-		
-	
-	
-	
-<<<<<<< HEAD
-
-=======
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
-
+//##############################################End Officer Part###################################################
 
 		Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
 		Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
@@ -317,14 +262,8 @@ Route::group(['middleware' => 'checkSession'], function () {
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
 		Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-<<<<<<< HEAD
-	Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
+
 	Route::put('profile', ['as' => 'profile.update', 'uses' => 'App\Http\Controllers\ProfileController@update']);
 	Route::put('profile/password', ['as' => 'profile.password', 'uses' => 'App\Http\Controllers\ProfileController@password']);
 });
-=======
-	
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
-
-
 

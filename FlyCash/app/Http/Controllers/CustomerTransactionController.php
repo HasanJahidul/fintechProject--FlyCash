@@ -4,6 +4,8 @@ namespace App\Http\Controllers;
 use Validator;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Customerstransaction;
+use App\Models\Customer;
+use Illuminate\Support\Facades\DB;
 
 class CustomerTransactionController extends Controller
 {
@@ -32,47 +34,10 @@ class CustomerTransactionController extends Controller
         return view('pages.customer.transaction.addmoney');
     }public function addmoneyDone(TransactionRequest $req)
     {
-<<<<<<< HEAD
         if($req-> ammount >100)
         {
             $req->session()->flash('msg', 'hi');
                 return redirect('/customer-addmoney');
-=======
-        if($req-> amount >97)
-        {
-            if ($req->session()->get('password')==$req-> password){
-
-                $email=$req->session()->get('email');
-                $balance=$req->session()->get('balance');
-                $customer = Customer::where('email',$email)
-                ->first();
-                $newbalance=$balance+$req-> amount;
-                $balance=$newbalance;
-            
-
-                $req->session()->put('balance', $balance);
-
-                $customer->balance = $balance;
-                $customer->save();
-                $transaction=new Customerstransaction();
-                $transaction->phone=$req->phone;
-                $transaction->email=$email;
-                $transaction->transaction_type="Add Money";
-                $transaction->amount=$req->amount;
-                $transaction->balance = $balance;
-                $transaction->date = now();
-                $transaction->save();
-
-
-
-                return back()->with('msg','Addmoney Successfull') ;
-
-            }else{
-                
-                return back()->with('err','Incorrect Password') ;
-            }
-            
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
 
         }else{
             return back()->with('err','Add money Unsuccessfull') ;
@@ -91,42 +56,8 @@ class CustomerTransactionController extends Controller
     {
         if($req-> ammount >10)
         {
-<<<<<<< HEAD
             $req->session()->flash('msg', 'hi');
                 return redirect('/customer-addmoney');
-=======
-            if ($req->session()->get('password')==$req-> password){
-
-                $email=$req->session()->get('email');
-                $balance=$req->session()->get('balance');
-                $customer = Customer::where('email',$email)
-                ->first();
-                $newbalance=$balance-$req-> amount;
-                $balance=$newbalance;
-            
-
-                $req->session()->put('balance', $balance);
-
-                $customer->balance = $balance;
-                $customer->save();
-                $transaction=new Customerstransaction();
-                $transaction->phone=$req->phone;
-                $transaction->email=$email;
-                $transaction->transaction_type="Send Money";
-                $transaction->amount=$req->amount;
-                $transaction->balance = $balance;
-                $transaction->date = now();
-                $transaction->save();
-
-
-
-                return back()->with('msg','Send Money Successfull') ;
-
-            }else{
-                return back()->with('err','Incorrect Password') ;
-            }
-            
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
 
         }else{
             return back()->with('err','Send Money Unsuccessfull') ;
@@ -393,6 +324,52 @@ class CustomerTransactionController extends Controller
         }
 
     }
+//==========================Officers Block=============================================
 
+    public function userblocked($email)
+    {
+        
+        //dd($email);
+            $update =  DB::table('customers')
+            ->where('email', $email)
+            ->update([
+                'transaction_status' => 'blocked',
+            ]);
+        
+            if ($update)
+            {
+                return back()->with('msg','User transaction Blocked') ;
+
+            }else{
+                return back()->with('msg','Database Problem') ;
+
+            }
+            
+            
+        
+    }
+
+    public function userunblocked($email)
+    {
+        
+        //dd($email);
+        $update =  DB::table('customers')
+        ->where('email', $email)
+        ->update([
+            'transaction_status' => 'unblocked',
+        ]);
+    
+        if ($update)
+        {
+            return back()->with('msg','User transaction Unlocked') ;
+
+        }else{
+            return back()->with('msg','Database Problem') ;
+
+        }
+        
+    }
+
+//==========================End Officer Block==========================================
 
 }

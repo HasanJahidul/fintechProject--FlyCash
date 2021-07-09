@@ -36,19 +36,27 @@
                   <td>{{$user->balance}}</td>
 
                   <td>
-                    <a href="/pages/officer/customer/edit/{{$user->id}}">
-                        <!-- <i class="tim-icons icon-pencil" data-bs-toggle="modal" data-bs-target="#agentModal"></i> -->
+                    <!-- <a href="/pages/officer/customer/edit/{{$user->id}}">
                         <i class="tim-icons icon-pencil"></i>
                           Edit
                     </a> |  
-                    <a href="/pages/officer/customer/delete/{{$user->id}}">
-                      <i class="tim-icons icon-trash-simple"></i>
-                        delete
-                    </a> |
                     <a href="#">
                       <i class="tim-icons icon-trash-simple"></i>
                         Block
-                    </a>
+                    </a> -->
+
+                     
+                    <?php
+                      if ($user->transaction_status=="unblocked"){
+                        ?>
+                        <a href="{{ url ('officer-blockeduser/'.$user->email )}}" class="btn btn-primary btn-sm">Block</a> 
+                      <?php
+                      }if ($user->transaction_status=="blocked"){
+                        ?>
+                        <a href="{{ url ('officer-unblockuser/'.$user->email )}}" class="btn btn-primary btn-sm">Unblock</a>
+                        <?php  
+                    }
+                    ?>
                   </td>
                 </tr>
               @endforeach

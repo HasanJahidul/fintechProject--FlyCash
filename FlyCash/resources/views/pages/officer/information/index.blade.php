@@ -36,7 +36,7 @@
                   <a href="/pages/officer/information/details/{{$user->id}}">
                     <i class="fas fa-info-circle"></i>
                       Details
-                  </a>
+                  </a> |
                   <a href="/pages/officer/information/edit/{{$user->id}}">
                       <i class="tim-icons icon-pencil"></i>
                         Edit

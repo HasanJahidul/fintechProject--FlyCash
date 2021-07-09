@@ -56,10 +56,10 @@
                     </a>
                     <ul class="dropdown-menu dropdown-navbar">
                         <li class="nav-link">
-                            <a href="{{ route('customer_profile_edit') }}" class="nav-item dropdown-item">{{ __('Profile') }}</a>
+                            <a href="#" class="nav-item dropdown-item">{{ __('Profile') }}</a>
                         </li>
                         <li class="nav-link">
-                            <a href="{{ route('profile_passwordChange') }}" class="nav-item dropdown-item">{{ __('Change Password') }}</a>
+                            <a href="#" class="nav-item dropdown-item">{{ __('Change Password') }}</a>
                         </li>
                         <li class="nav-link">
                             <a href="#" class="nav-item dropdown-item">{{ __('Settings') }}</a>

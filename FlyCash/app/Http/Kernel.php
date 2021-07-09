@@ -68,10 +68,5 @@ class Kernel extends HttpKernel
         'customer'=> \App\Http\Middleware\CheckCustomer::class,
         'admin'=> \App\Http\Middleware\CheckAdmin::class,
         'officer'=> \App\Http\Middleware\CheckOfficer::class,
-<<<<<<< HEAD
-=======
-        'transCheck'=> \App\Http\Middleware\CheckTransactionStatus::class,
-        
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
     ];
 }

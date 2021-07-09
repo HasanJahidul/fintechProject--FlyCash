@@ -3,13 +3,8 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-<<<<<<< HEAD
 use App\Models\Customer;
-=======
-use App\Models\Officer;
-use Validator;
-use App\Http\Requests\EditProfileRequest;
->>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
+
 use Illuminate\Support\Facades\DB; //Import query builser 
 //Ruhul Amin
 

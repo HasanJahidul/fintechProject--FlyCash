@@ -36,11 +36,11 @@
                   <td>{{$user->balance}}</td>
 
                   <td>
-                    <a href="/pages/officer/agent/edit/{{$user->id}}">
-                        <!-- <i class="tim-icons icon-pencil" data-bs-toggle="modal" data-bs-target="#agentModal"></i> -->
+                    <!-- <a href="/pages/officer/agent/edit/{{$user->id}}">
+                        <i class="tim-icons icon-pencil" data-bs-toggle="modal" data-bs-target="#agentModal"></i>
                         <i class="tim-icons icon-pencil"></i>
                           Edit
-                    </a> |  
+                    </a> |   -->
                     <a href="/pages/officer/agent/delete/{{$user->id}}">
                       <i class="tim-icons icon-trash-simple"></i>
                         delete
