@@ -1,6 +1,20 @@
 <?php
 
 namespace App\Http\Controllers;
+<<<<<<< HEAD
+=======
+use App\Models\campaign;
+use Validator;
+use App\Models\Agent;
+use App\Models\Agentstransaction;
+use App\Models\Admin;
+use App\Models\Loginuser;
+use App\Models\customerstransactions;
+
+use App\Http\Requests\RegisterRequest;
+use App\Http\Requests\TransactionRequest;
+use App\Models\Customer;
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
 
 use Illuminate\Http\Request;
 
@@ -15,7 +29,30 @@ class AdminController extends Controller
     public function addagent()
     {
         return view('pages.admin.agent.addagent');
+
     }
+
+    public function insertagent (RegisterRequest $req)
+    {
+        $agent = new Agent;
+        $agent->name = $req->name;
+        $agent->email = $req->email;
+        $agent->password = $req->password;
+        $agent->transaction_status = 1;
+        $agent->phone = $req->phone;
+        $agent->nid = $req->nid;
+        $agent->dob = $req->dob;
+        $agent->type = "agent";
+        //$user->user_type = "active";
+        $agent->balance = 20;
+        $agent->save();
+
+
+                    return view('pages.admin.agent.addagent');
+
+
+    }
+
     public function editagent()
     {
         return view('pages.admin.agent.editagent');
@@ -24,14 +61,51 @@ class AdminController extends Controller
     {
         return view('pages.admin.agent.agenttransaction');
     }
+    public function addmoney(TransactionRequest $req)
+    {
+           if ($req->session()->get('password')==$req-> password){
+
+                $email=$req->session()->get('email');
+                $balance=$req->session()->get('balance');
+                $agent = Agent::where('email',$email)
+                ->first();
+                $newbalance=$balance+$req-> amount;
+                $balance=$newbalance;
+
+
+                $req->session()->put('balance', $balance);
+
+                $agent->balance = $balance;
+                $agent->save();
+                $transaction=new Agentstransaction();
+                $transaction->phone=$req->phone;
+                $transaction->email=$email;
+                $transaction->transaction_type="Add Money";
+                $transaction->amount=$req->amount;
+                $transaction->balance = $balance;
+                $transaction->date = now();
+                $transaction->save();
+
+
+
+                return back()->with('msg','Add Money Successfull') ;
+
+            }else{
+                $req->session()->flash('msg', 'Incorrect Password');
+                return redirect('/agent-bkash');
+            }
+   }
+
     public function chatagent()
     {
         return view('pages.admin.agent.chatagent');
     }
     public function blockagent()
     {
-        return view('pages.admin.agent.blockagent');
-    }
+        $agents = Agent ::all();
+        return view('pages.admin.agent.blockagent') ->with('agents',$agents);   
+     }
+
     public function addagentmoney()
     {
         return view('pages.admin.agent.addagentmoney');
@@ -66,20 +140,107 @@ class AdminController extends Controller
     {
         return view('pages.admin.user.adduser');
     }
+<<<<<<< HEAD
+=======
+    public function insertuser (RegisterRequest $req)
+    {
+        $customer = new Customer;
+        $customer->name = $req->name;
+        $customer->email = $req->email;
+        $customer->password = $req->password;
+        $customer->transaction_status = 1;
+        $customer->phone = $req->phone;
+        $customer->nid = $req->nid;
+        $customer->dob = $req->dob;
+        $customer->type = "customer";
+        //$user->user_type = "active";
+        $customer->balance = 20;
+        $customer->save();
+
+
+        // $loginuser = new Loginuser;
+        //             $loginuser->email = $req->email;
+        //             $loginuser->password = $req->password;
+        //             $loginuser->phone = $req->phone;
+        //             $loginuser->nid = $req->nid;
+        //             $loginuser->type = "customer";
+        //             $loginuser->save();
+
+                    return view('pages.admin.user.adduser');
+
+
+    }
+
+
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
     public function edituser()
     {
-        return view('pages.admin.user.edituser');
+        $customers = Customer ::all();
+        return view('pages.admin.user.edituser') ->with('customers',$customers);
     }
-    public function transaction()
+    public function transaction(Request $req)
+    {
+        $email=$req->session()->get('email');
+        $transaction = customerstransactions::all();
+
+        return view('pages.admin.user.transaction')->with('transaction',$transaction);
+    }
+    public function transactionlist()
     {
         return view('pages.admin.user.transaction');
+
     }
+
     public function discount()
     {
         return view('pages.admin.user.discount');
     }
     public function blockuser()
     {
-        return view('pages.admin.user.blockuser');
+        $customers = Customer ::all();
+
+        return view('pages.admin.user.blockuser') ->with('customers',$customers);
+    }
+    public function userblocked($email)
+    {
+        
+        //dd($email);
+            $update =  DB::table('customers')
+            ->where('email', $email)
+            ->update([
+                'transaction_status' => 'blocked',
+            ]);
+           
+            if ($update)
+            {
+                return back()->with('msg','User transaction Blocked') ;
+
+            }else{
+                return back()->with('msg','Database Problem') ;
+    
+            }
+             
+            
+        
+    }
+    public function userunblocked($email)
+    {
+        
+        //dd($email);
+        $update =  DB::table('customers')
+        ->where('email', $email)
+        ->update([
+            'transaction_status' => 'unblocked',
+        ]);
+       
+        if ($update)
+        {
+            return back()->with('msg','User transaction Unlocked') ;
+
+        }else{
+            return back()->with('msg','Database Problem') ;
+
+        }
+        
     }
 }

@@ -2,11 +2,9 @@
 
 namespace App\Http\Requests;
 
-use App\Models\User;
-use Illuminate\Validation\Rule;
 use Illuminate\Foundation\Http\FormRequest;
 
-class ProfileRequest extends FormRequest
+class EditProfileRequest extends FormRequest
 {
     /**
      * Determine if the user is authorized to make this request.
@@ -28,9 +26,9 @@ class ProfileRequest extends FormRequest
         return [
             'name' => 'required|min:3|max:30|alpha',
             'email' => 'email:rfc,dns|required|min:10|max:50|',
-            'old_password'=> 'required|min:8|max:20',
-            'password'=> 'required|min:8|max:20',
-            'password_confirmation'=> 'required|min:8|max:20',
+            'old_password'=> 'required',
+            'password'=> 'required|min:8|max:20|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
+            'password_confirmation'=> 'required|min:8|max:20|regex:/^(?=.*[a-z])(?=.*[A-Z])(?=.*\d).+$/',
             'phone' => 'required|min:11|numeric',
         ];
     }

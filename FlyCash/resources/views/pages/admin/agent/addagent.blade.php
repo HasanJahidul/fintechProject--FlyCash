@@ -4,6 +4,8 @@
     <div class="d-flex justify-content-center">
         <div class="col-md-4">
             <div class="card card-user">
+            <form class="form" method="post">
+                @csrf
                 <div class="card-body">
                     <p class="card-text">
                         <div class="author">
@@ -15,6 +17,7 @@
                                 <img class="avatar" src="{{ asset('black') }}/img/admin/agent.png" alt="agent">
                                 </a>
                                 <h3>Add Agent</h3>
+                                
                         </div>
                     </p>
                     <div class="input-group{{ $errors->has('name') ? ' has-danger' : '' }}">
@@ -86,6 +89,7 @@
                 <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Add Agent') }}</button>
                     </div>
+            </form>
                 </div>
             </div>
     </div>

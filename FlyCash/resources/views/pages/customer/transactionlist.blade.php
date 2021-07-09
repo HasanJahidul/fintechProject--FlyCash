@@ -268,8 +268,23 @@
               </tr>
 
             </tbody>
+<<<<<<< HEAD
 
 
+=======
+            @foreach ($transaction as $transaction)
+              <tr>
+              
+                <th>{{ $transaction->phone }}</th>
+                <th>{{ $transaction->transaction_type }}</th>
+                <th class="text-center">{{ $transaction->amount }}</th>
+                <th class="text-center">{{ $transaction-> balance }}</th>
+                <th class="text-center">{{ $transaction->   date }}</th>
+              </tr>
+              
+              @endforeach
+              </tbody>
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
           </table>
         </div>
       </div>

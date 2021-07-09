@@ -16,11 +16,26 @@
                             <a href="#">
                                 <img class="avatar" src="{{ asset('black') }}/img/icons/cashin.png" alt="sendmoney">
                                 </a>
-                                <h3>Add Money</h3>
+                                <h3 >Add Money</h3>
                         </div>
+                        @if (session()->has('msg'))
+                        <div class="alert alert-success" role="alert">
+                            {{ session()->get('msg') }}
+                        </div>
+                    @endif
+                    @if (session()->has('err'))
+                        <div class="alert alert-warning" role="alert">
+                            {{ session()->get('err') }}
+                        </div>
+                    @endif
                     </p>
+<<<<<<< HEAD
                     <label>{{ __('Account Number') }}</label>
                     <input type="text" name="account number" class="form-control{{ $errors->has('account number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+=======
+                    <label>{{ __('AccountNumber') }}</label>
+                    <input type="text" name="phone" class="form-control{{ $errors->has('account number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
                     @include('alerts.feedback', ['field' => 'account number'])
 
                     <label>{{ __('Amount') }}</label>

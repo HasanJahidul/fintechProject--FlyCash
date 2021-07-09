@@ -1,5 +1,4 @@
 @extends('layouts.app', ['page' => __('Tables'), 'pageSlug' => 'tables'])
-
 @section('content')
 <div class="row">
   <div class="col-md-12">
@@ -37,6 +36,7 @@
                 <td>
                 15/5/2021
 
+<<<<<<< HEAD
                 </td>
                 <td class="text-center">
                 <button type="button">Remove</button>
@@ -57,12 +57,24 @@
                 </td>
               </tr>
               
+=======
+                <th><img src="{{asset('black/img/campaigns/' . $campaign->image) }}" width="100px;" height="100px;" alt="image"></th>
+                <th>
+
+                <a href="{{ url ('admin-removecampaign/'.$campaign->id )}}" class="btn btn-primary btn-sm">Remove</a> 
+
+                    </th>
+              </tr>
+              @endforeach
+
+
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
             </tbody>
           </table>
         </div>
       </div>
     </div>
   </div>
-  
+
 </div>
 @endsection

@@ -71,7 +71,7 @@
             </li>
 
             <li >
-                            <a href="{{ route('profile.edit')  }}">
+                            <a href="{{ route('customer_profile_edit')  }}">
                                 <i class="tim-icons icon-single-02"></i>
                                 <p>{{ __('User Profile') }}</p>
                             </a>
