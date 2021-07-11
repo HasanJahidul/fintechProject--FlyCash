@@ -14,6 +14,7 @@ class CreateAgentstransactionsTable extends Migration
     public function up()
     {
         Schema::create('agentstransactions', function (Blueprint $table) {
+            $table->id();
             $table->string('email')->unique();
             $table->string('phone');
             $table->string('transaction_type');

@@ -3,7 +3,7 @@
         <ul class="nav">
             <li class="nav-item">
                 <a href="#" target="blank" class="nav-link">
-                    {{ __('JayDev') }}
+                    {{ __('FlyCash') }}
                 </a>
             </li>
             
@@ -20,7 +20,7 @@
         </ul>
         <div class="copyright">
             &copy; {{ now()->year }} {{ __('made with') }} <i class="tim-icons icon-heart-2"></i> {{ __('by') }}
-            <a href="#" target="_blank">{{ __('JayDev') }}</a> {{ __('for a better web') }}.
+            <a href="#" target="_blank">{{ __('FlyCash') }}</a> {{ __('for a better web') }}.
         </div>
     </div>
 </footer>

@@ -6,6 +6,7 @@ use App\Http\Requests\TransactionRequest;
 use App\Models\Customerstransaction;
 use App\Models\Customer;
 use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class CustomerTransactionController extends Controller
 {
@@ -330,23 +331,20 @@ class CustomerTransactionController extends Controller
     {
         
         //dd($email);
-            $update =  DB::table('customers')
-            ->where('email', $email)
-            ->update([
-                'transaction_status' => 'blocked',
-            ]);
-        
-            if ($update)
-            {
-                return back()->with('msg','User transaction Blocked') ;
+        $update =  DB::table('customers')
+        ->where('email', $email)
+        ->update([
+            'transaction_status' => 'blocked',
+        ]);
+    
+        if ($update)
+        {
+            return back()->with('msg','User transaction Blocked') ;
 
-            }else{
-                return back()->with('msg','Database Problem') ;
+        }else{
+            return back()->with('msg','Database Problem') ;
 
-            }
-            
-            
-        
+        }
     }
 
     public function userunblocked($email)
@@ -368,6 +366,21 @@ class CustomerTransactionController extends Controller
 
         }
         
+    }
+
+    public function customer_transaction_details(Customerstransaction $id){
+        
+        $users= Customerstransaction::find($id); //change Officer to (Customer)->tablename
+
+        return view('pages.officer.customer.customer_transaction')->with('user', $users);
+    }
+
+    public function pdf($email){
+
+        $user = Customerstransaction::find($email); // Model Query
+
+        $pdf = PDF::loadView('pages.officer.pdf.customer_invoice',compact('user'));
+        return $pdf->stream('invoice.pdf');
     }
 
 //==========================End Officer Block==========================================

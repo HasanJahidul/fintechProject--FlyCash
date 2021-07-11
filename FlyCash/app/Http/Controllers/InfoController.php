@@ -67,12 +67,12 @@ class InfoController extends Controller
     }
 // ============================ End Destroy ====================================
 
-    public function pdf($id){
+    // public function pdf($id){
 
-        $user = Agentstransactions::find($id); // Model Query
+    //     $user = Agentstransactions::find($id); // Model Query
 
-        $pdf = PDF::loadView('pages.officer.pdf.invoice',compact('user'));
-        return $pdf->stream('invoice.pdf');
-    }
+    //     $pdf = PDF::loadView('pages.officer.pdf.invoice',compact('user'));
+    //     return $pdf->stream('invoice.pdf');
+    // }
 //===========================End pdf===========================================
 }

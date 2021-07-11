@@ -25,7 +25,7 @@
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <div class="notification d-none d-lg-block d-xl-block"></div>
-                        <i class="tim-icons icon-sound-wave"></i>
+                        <i class="tim-icons icon-bell-55"></i>
                         <p class="d-lg-none"> {{ __('Notifications') }} </p>
                     </a>
                     <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
@@ -46,6 +46,34 @@
                         </li>
                     </ul>
                 </li>
+
+                <!-- ==================================Caht Bar========================================= -->
+                <li class="dropdown nav-item">
+                    <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
+                        <div class="notification d-none d-lg-block d-xl-block"></div>
+                            <i class="tim-icons icon-chat-33"></i>
+                        <p class="d-lg-none"> {{ __('Chat') }} </p>
+                    </a>
+                    <ul class="dropdown-menu dropdown-menu-right dropdown-navbar">
+                        <li class="nav-link">
+                            <a href="#" class="nav-item dropdown-item">{{ __('Ruhul Amin') }}</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#" class="nav-item dropdown-item">{{ __('Jahid Hasan') }}</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#" class="nav-item dropdown-item">{{ __('Borno') }}</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#" class="nav-item dropdown-item">{{ __('Fiyaz Khan') }}</a>
+                        </li>
+                        <li class="nav-link">
+                            <a href="#" class="nav-item dropdown-item">{{ __('Koly Islam') }}</a>
+                        </li>
+                    </ul>
+                </li>
+<!-- =================================================================================== -->
+
                 <li class="dropdown nav-item">
                     <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown">
                         <div class="photo">

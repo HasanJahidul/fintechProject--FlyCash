@@ -16,7 +16,18 @@ class AgentController extends Controller
 
         return view('pages.officer.agent.index')->with('users', $users);
     }
-    // ============================ End Insert ====================================
+    // ============================ End Index ====================================
+
+    public function details($email)
+    {
+        $users= Agent::find($email); //change Officer to (Agent)->tablename
+
+        //$users = Officer::orderBy('id','DESC')->get(); //change Officer to (Agent)->tablename
+
+        return view('pages.officer.agent.details')->with('users', $users);
+    }
+
+//===============================================================
 
     public function edit($id){
 

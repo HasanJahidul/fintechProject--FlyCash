@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="title">{{ __('Delete Agent Information') }}</h3>
+                    <h3 class="title">{{ __('Details Agent Information') }}</h3>
                 </div>
                 <form method="post" autocomplete="off">
                     <div class="card-body">
@@ -50,7 +50,6 @@
                             </div> 
                     </div>
                     <div class="card-footer">
-                        <button type="submit" class="btn btn-fill btn-primary">{{ __('Delete') }}</button>
                         <a href="{{route('agent_index')}}" class="btn btn-success">Back</a>
                     </div>
                 </form>

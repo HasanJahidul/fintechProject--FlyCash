@@ -12,18 +12,20 @@
             
             <table border="1">
                 <tr>
-                    <th>Name</th>
-                    <th>Email</th>
-                    <th>Phone</th>
-                    <th>NID</th>
-                    <th>DOB</th>
+                <th>Email</th>
+                <th>Phone</th>
+                <th>Transacton Type</th>
+                <th>Amount</th>
+                <th>Balance</th>
+                <th>Date</th>
                 </tr>
                 <tr>
-                    <td>{{$user->name}}</td>
-                    <td>{{$user->email}}</td>
-                    <td>{{$user->phone}}</td>
-                    <td>{{$user->nid}}</td>
-                    <td>{{$user->dob}}</td>
+                <td>{{$user->email}}</td>
+                <td>{{$user->phone}}</td>
+                <td>{{$user->transaction_type}}</td>
+                <td>{{$user->amount}}</td>
+                <td>{{$user->balance}}</td>
+                <td>{{$user->date}}</td>
                 </tr>
             </table>
         </div>

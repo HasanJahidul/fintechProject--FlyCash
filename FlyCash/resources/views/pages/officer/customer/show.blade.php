@@ -4,6 +4,13 @@
 <div class="row">
   <div class="col-md-12">
     <div class="card ">
+
+      @if (session()->has('msg'))
+        <div class="alert alert-success" role="alert">
+            {{ session()->get('msg') }}
+        </div>
+      @endif
+
       <div class="card-header">
         <h3 class="card-title"> Customer Details Information</h3>
       </div>
@@ -24,9 +31,9 @@
               </tr>
             </thead>
             <tbody>
-              @foreach($users as $user)
+              @foreach($users as $key=>$user)
                 <tr>
-                  <td>{{$user->id}}</td>
+                  <td>{{$key+1}}</td>
                   <td>{{$user->name}}</td>
                   <td>{{$user->email}}</td>
                   <td>{{$user->phone}}</td>
@@ -36,26 +43,21 @@
                   <td>{{$user->balance}}</td>
 
                   <td>
-                    <!-- <a href="/pages/officer/customer/edit/{{$user->id}}">
-                        <i class="tim-icons icon-pencil"></i>
-                          Edit
-                    </a> |  
-                    <a href="#">
-                      <i class="tim-icons icon-trash-simple"></i>
-                        Block
-                    </a> -->
 
-                     
+                    <a href="{{ url ('customer-transaction/'.$user->id )}}" class="btn btn-primary btn-sm">Details</a>
+                    
+                    <a href="{{ url ('customer-edit/'.$user->id )}}" class="btn btn-primary btn-sm">Edit</a> 
+                
                     <?php
                       if ($user->transaction_status=="unblocked"){
                         ?>
-                        <a href="{{ url ('officer-blockeduser/'.$user->email )}}" class="btn btn-primary btn-sm">Block</a> 
-                      <?php
+                        <a href="{{ url ('customer-blockeduser/'.$user->email )}}" class="btn btn-primary btn-sm">Block</a> 
+                    <?php
                       }if ($user->transaction_status=="blocked"){
-                        ?>
-                        <a href="{{ url ('officer-unblockuser/'.$user->email )}}" class="btn btn-primary btn-sm">Unblock</a>
-                        <?php  
-                    }
+                    ?>
+                        <a href="{{ url ('customer-unblockuser/'.$user->email )}}" class="btn btn-primary btn-sm">Unblock</a>
+                    <?php  
+                      }
                     ?>
                   </td>
                 </tr>
