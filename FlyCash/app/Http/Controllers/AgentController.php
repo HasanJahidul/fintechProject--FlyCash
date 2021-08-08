@@ -37,11 +37,11 @@ class AgentController extends Controller
     }
 // ============================ End Edit ====================================
 
-    public function update(Request $req, Agent $id)
+    public function update(Request $req,$id)
     {
         $users = Agent::find($id);
         
-        $users->name = $req->name;
+        //$users->name = $req->name;
         // if($users->password != $req->password){
         //     $users->password = $req->password;
         // }

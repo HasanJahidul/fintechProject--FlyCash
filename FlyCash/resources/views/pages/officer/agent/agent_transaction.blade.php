@@ -1,11 +1,11 @@
-@extends('layouts.app', ['page' => __('Agent Transaction Details'), 'pageSlug' => 'agenttransaction'])
+@extends('layouts.app', ['page' => __('Agent Details'), 'pageSlug' => 'agenttransaction'])
 
 @section('content')
     <div class="row">
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h3 class="title">{{ __('Customer Transantion Data') }}</h3>
+                    <h3 class="title">{{ __('Agent Transantion Data') }}</h3>
                 </div>
                 <div class="card-body">
                     <table border="1">
@@ -30,7 +30,7 @@
                     </table>
                         <br><br><br>
                         <a href="{{url('agent-invoice', $user->id)}}" class="btn btn-success">Download Pdf</a>
-                        <a href="{{route('agent_show')}}" class="btn btn-success">Back</a>
+                        <a href="{{route('agent_index')}}" class="btn btn-success">Back</a>
                 </div>
             </div>
         </div>

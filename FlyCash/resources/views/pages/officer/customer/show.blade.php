@@ -50,7 +50,7 @@
                 
                     <?php
                       if ($user->transaction_status=="unblocked"){
-                        ?>
+                    ?>
                         <a href="{{ url ('customer-blockeduser/'.$user->email )}}" class="btn btn-primary btn-sm">Block</a> 
                     <?php
                       }if ($user->transaction_status=="blocked"){

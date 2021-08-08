@@ -112,7 +112,7 @@ class AgentTransactionController extends Controller
 
     //==========================Officers Block=============================================
 
-    public function agentblocked($id){
+    public function agentblocked(Agent $id){
 
         //dd($email);
         $update =  DB::table('Agent')
@@ -131,7 +131,7 @@ class AgentTransactionController extends Controller
         }
     }
 
-    public function agentunblocked($id){
+    public function agentunblocked(Agent $id){
         
         //dd($email);
         $update =  DB::table('Agent')

@@ -28,11 +28,11 @@ class CustomerController extends Controller
     }
 // ============================ End Edit ====================================
 
-    public function update(Request $req, Customer $id)
+    public function update(Request $req,$id)
     {
         $users = Customer::find($id);
         
-        $users->name = $req->name;
+        //$users->name = $req->name;
         // if($users->password != $req->password){
         //     $users->password = $req->password;
         // }
@@ -88,7 +88,7 @@ class CustomerController extends Controller
 
         return view('pages.customer.profile.edit');
     }
-    public function changeCustomerPasswordDone(EditProfileRequest $req){
+    public function changeCustomerPasswordDone(Request $req){
 
         if ($req->session()->get('password')==$req-> old_password)
         {
