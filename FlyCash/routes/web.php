@@ -154,28 +154,60 @@ Route::group(['middleware' => 'checkSession'], function () {
 	
 	});
 	Route::get('/admin-ongoingcampaign', ['uses' => 'App\Http\Controllers\AdminController@ongoingcampaign'])->name('admin_ongoingcampaign');
+
+
+
+//==================================Start Officer Route================================================
+
 	Route::group(['middleware' => 'officer'], function () {
 
-		
+	//============================================Start Agent Routing===================================================
+
 		Route::get('/pages/officer/agent/index','App\Http\Controllers\AgentController@index')->name('agent_index');
 
-		Route::get('/pages/officer/agent/edit/{id}', 'App\Http\Controllers\AgentController@edit')->name('agent_edit');
-		Route::post('/pages/officer/agent/edit/{id}', 'App\Http\Controllers\AgentController@update');
+		Route::get('/agent-details/{email}','App\Http\Controllers\AgentController@details')->name('agent_details');
 
-		Route::get('/pages/officer/agent/delete/{id}', 'App\Http\Controllers\AgentController@delete');
-		Route::post('/pages/officer/agent/delete/{id}', 'App\Http\Controllers\AgentController@destroy')->name('agent_delete');
+		Route::get('/agent-edit/{id}', 'App\Http\Controllers\AgentController@edit')->name('agent_edit');
+		Route::post('/agent-edit/{id}', 'App\Http\Controllers\AgentController@update');
 
-//============================================End Agent Routing===================================================
+		// Route::get('/pages/officer/agent/delete/{id}', 'App\Http\Controllers\AgentController@delete');
+		// Route::post('/pages/officer/agent/delete/{id}', 'App\Http\Controllers\AgentController@destroy')->name('agent_delete');
+
+		Route::get('/agent-blockeduser/{id}', 'App\Http\Controllers\AgentTransactionController@agentblocked')->name('agent_blockeduser');
+		Route::get('/agent-unblockuser/{id}', 'App\Http\Controllers\AgentTransactionController@agentunblocked')->name('agent_unblockeduser');
+
+		Route::get('/agent-transaction/{id}', 'App\Http\Controllers\AgentTransactionController@agent_transaction_details')->name('agent_transaction');
+		// Route::post('/agent-transaction/{id}', 'App\Http\Controllers\AgentTransactionController@agent_transaction_details');
+		
+		// Invoice pdf generator using dompdf
+		Route::get('/agent-invoice/{id}','App\Http\Controllers\AgentTransactionController@pdf')->name('agent_invoice');
+
+	//============================================End Agent Routing=======================================
+	
+
+	//=======================================Start Customer Routing=========================================
 
 		Route::get('/pages/officer/customer/show','App\Http\Controllers\CustomerController@show')->name('customer_show');
 
-		Route::get('/pages/officer/customer/edit/{id}', 'App\Http\Controllers\CustomerController@edit')->name('customer_edit');
-		Route::post('/pages/officer/customer/edit/{id}', 'App\Http\Controllers\CustomerController@update');
+		Route::get('/customer-edit/{id}', 'App\Http\Controllers\CustomerController@edit')->name('customer_edit');
+		Route::post('/customer-edit/{id}', 'App\Http\Controllers\CustomerController@update');
 
-		Route::get('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@delete');
-		Route::post('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@destroy')->name('customer_delete');
+		// Route::get('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@delete');
+		// Route::post('/pages/officer/customer/delete/{id}', 'App\Http\Controllers\CustomerController@destroy')->name('customer_delete');
+
+		Route::get('/customer-blockeduser/{email}', ['uses' => 'App\Http\Controllers\CustomerTransactionController@userblocked'])->name('customer_userblocked');
+		Route::get('/customer-unblockuser/{email}', ['uses' => 'App\Http\Controllers\CustomerTransactionController@userunblocked'])->name('customer_userunblocked');
+
+		Route::get('/customer-transaction/{id}', 'App\Http\Controllers\CustomerTransactionController@customer_transaction_details')->name('customer_transaction');
+		// Route::post('/customer-transaction/{id}', 'App\Http\Controllers\CustomerTransactionController@customer_transaction_details');
 		
-//**********************************************End Customer Routing************************************************
+		// Invoice pdf generator using dompdf
+		Route::get('/customer-invoice/{email}','App\Http\Controllers\CustomerTransactionController@pdf')->name('customer_invoice');
+
+	//==========================End Customer Routing========================================
+	
+
+	//**********************************Start Information Routing********************************************
 		
 		// 	Route::get('transection', ['as' => 'transection.tran', 'uses' => 'TranController@tran']);
 		// 	Route::get('icons', ['as' => 'pages.icons', 'uses' => 'PageController@icons']);
@@ -190,13 +222,13 @@ Route::group(['middleware' => 'checkSession'], function () {
 		Route::post('/pages/officer/information/edit/{id}','App\Http\Controllers\InfoController@update')->name('information_update');
 		
 		Route::get('/pages/officer/information/delete/{id}','App\Http\Controllers\InfoController@delete');
-		Route::post('/pages/officer/information/delete/{id}','App\Http\Controllers\InfoController@destroy')->name('information_delete');
+		// Route::post('/pages/officer/information/delete/{id}','App\Http\Controllers\InfoController@destroy')->name('information_delete');
 
-		// Invoice pdf generator using dompdf
-		Route::get('/pages/officer/pdf/invoice/{id}','App\Http\Controllers\InfoController@pdf')->name('pdf.invoice');
+	//==================================End Information Route================================================
 
-//==============================================================================================================
-//=============================================================================================================
+
+	//=======================================Start Officer Route============================================
+
 		//Route::resource('/pages/officer/profile','OfficerController');
 
 		Route::get('/pages/officer/profile/edit','App\Http\Controllers\OfficerController@edit')->name('profile_edit');		
@@ -208,15 +240,10 @@ Route::group(['middleware' => 'checkSession'], function () {
 		// Route::post('/pages/officer/profile','OfficerController@store')->name('image_insert');
 		// Route::post('/pages/officer/profile','OfficerController@update');
 
-//==============================================================================================================
-
-
+//===========================================End Officer Route=========================================================
 
 	});
-		
-	
-	
-	
+//*****************************************************************************************************************/
 
 
 		Route::get('profile', ['as' => 'profile.edit', 'uses' => 'App\Http\Controllers\ProfileController@edit']);
@@ -229,7 +256,3 @@ Route::group(['middleware' => 'checkSession'], function () {
 		Route::get('typography', ['as' => 'pages.typography', 'uses' => 'App\Http\Controllers\PageController@typography']);
 		Route::get('upgrade', ['as' => 'pages.upgrade', 'uses' => 'App\Http\Controllers\PageController@upgrade']);
 		Route::resource('user', 'App\Http\Controllers\UserController', ['except' => ['show']]);
-	
-
-
-

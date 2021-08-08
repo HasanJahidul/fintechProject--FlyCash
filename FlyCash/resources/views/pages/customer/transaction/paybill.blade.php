@@ -29,7 +29,11 @@
                     <form method="post">
                     </p>
                     <label>{{ __('Bill Number') }}</label>
+<<<<<<< HEAD
+                    <input type="text" name="billnumber" class="form-control{{ $errors->has('billnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('54789652') }}">
+=======
                     <input type="text" name="phone" class="form-control{{ $errors->has('billnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('54789652') }}">
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
                     @include('alerts.feedback', ['field' => 'bill number'])
 
                     <label>{{ __('Bill Type') }}</label>

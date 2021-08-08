@@ -5,7 +5,7 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h5 class="title">{{ __('Change Password') }}</h5>
+                    <h3 class="title">{{ __('Change Password') }}</h3>
                 </div>
                 <form method="post" action="#" autocomplete="off">
                     <div class="card-body">
@@ -35,7 +35,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Change password') }}</button>
-                        <a href="{{route('home')}}" class="btn btn-success">Back</a>
+                        <a href="{{route('officer_home')}}" class="btn btn-success">Back</a>
                     </div>
                 </form>
             </div>

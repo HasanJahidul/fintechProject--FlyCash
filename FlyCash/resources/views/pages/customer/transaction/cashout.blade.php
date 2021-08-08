@@ -30,8 +30,13 @@
                     <form method="post">
                     </p>
                     <label>{{ __('Agent Number') }}</label>
+<<<<<<< HEAD
+                    <input type="text" name="account number" class="form-control{{ $errors->has('account number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+                    @include('alerts.feedback', ['field' => 'account number'])
+=======
                     <input type="text" name="phone" class="form-control{{ $errors->has('accountnumber') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
                     @include('alerts.feedback', ['field' => 'accountnumber'])
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
 
                     <label>{{ __('Amount') }}</label>
                     <input type="text" name="amount" class="form-control{{ $errors->has('amount') ? ' is-invalid' : '' }}" placeholder="{{ __('0.00') }}">

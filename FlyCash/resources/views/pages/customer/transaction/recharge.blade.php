@@ -12,7 +12,11 @@
                             <div class="block block-two"></div>
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
+<<<<<<< HEAD
+                            <form method="post">
+=======
                             
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
                             <a href="#">
                                 <img class="avatar" src="{{ asset('black') }}/img/icons/cashin.png" alt="sendmoney">
                                 </a>
@@ -31,7 +35,11 @@
                     <form method="post">
                     </p>
                     <label>{{ __('Mobile Number') }}</label>
+<<<<<<< HEAD
+                    <input type="text" name="mobile number" class="form-control{{ $errors->has('mobile number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+=======
                     <input type="text" name="phone" class="form-control{{ $errors->has('mobile number') ? ' is-invalid' : '' }}" placeholder="{{ __('+8801*********') }}">
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
                     @include('alerts.feedback', ['field' => 'mobile number'])
 
                     <label>{{ __('Amount') }}</label>

@@ -5,7 +5,8 @@ use Validator;
 use App\Http\Requests\TransactionRequest;
 use App\Models\Customerstransaction;
 use App\Models\Customer;
-use App\Models\Agent;
+use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class CustomerTransactionController extends Controller
 {
@@ -32,42 +33,12 @@ class CustomerTransactionController extends Controller
     public function addmoney()
     {
         return view('pages.customer.transaction.addmoney');
-    }public function addmoneydone(TransactionRequest $req)
+    }public function addmoneyDone(TransactionRequest $req)
     {
-        if($req-> amount >97)
+        if($req-> ammount >100)
         {
-            if ($req->session()->get('password')==$req-> password){
-
-                $email=$req->session()->get('email');
-                $balance=$req->session()->get('balance');
-                $customer = Customer::where('email',$email)
-                ->first();
-                $newbalance=$balance+$req-> amount;
-                $balance=$newbalance;
-            
-
-                $req->session()->put('balance', $balance);
-
-                $customer->balance = $balance;
-                $customer->save();
-                $transaction=new Customerstransaction();
-                $transaction->phone=$req->phone;
-                $transaction->email=$email;
-                $transaction->transaction_type="Add Money";
-                $transaction->amount=$req->amount;
-                $transaction->balance = $balance;
-                $transaction->date = now();
-                $transaction->save();
-
-
-
-                return back()->with('msg','Addmoney Successfull') ;
-
-            }else{
-                
-                return back()->with('err','Incorrect Password') ;
-            }
-            
+            $req->session()->flash('msg', 'hi');
+                return redirect('/customer-addmoney');
 
         }else{
             return back()->with('err','Add money Unsuccessfull') ;
@@ -82,41 +53,12 @@ class CustomerTransactionController extends Controller
     {
         return view('pages.customer.transaction.sendmoney');
     }
-    public function sendmoneydone(TransactionRequest $req)
+    public function sendmoneyDone(TransactionRequest $req)
     {
-        if($req-> amount >100)
+        if($req-> ammount >10)
         {
-            if ($req->session()->get('password')==$req-> password){
-
-                $email=$req->session()->get('email');
-                $balance=$req->session()->get('balance');
-                $customer = Customer::where('email',$email)
-                ->first();
-                $newbalance=$balance-$req-> amount;
-                $balance=$newbalance;
-            
-
-                $req->session()->put('balance', $balance);
-
-                $customer->balance = $balance;
-                $customer->save();
-                $transaction=new Customerstransaction();
-                $transaction->phone=$req->phone;
-                $transaction->email=$email;
-                $transaction->transaction_type="Send Money";
-                $transaction->amount=$req->amount;
-                $transaction->balance = $balance;
-                $transaction->date = now();
-                $transaction->save();
-
-
-
-                return back()->with('msg','Send Money Successfull') ;
-
-            }else{
-                return back()->with('err','Incorrect Password') ;
-            }
-            
+            $req->session()->flash('msg', 'hi');
+                return redirect('/customer-addmoney');
 
         }else{
             return back()->with('err','Send Money Unsuccessfull') ;
@@ -242,8 +184,7 @@ class CustomerTransactionController extends Controller
     public function recharge()
     {
         return view('pages.customer.transaction.recharge');
-    } 
-    public function rechargedone(TransactionRequest $req)
+    } public function rechargedone(TransactionRequest $req)
     {
         if($req-> amount >9)
         {
@@ -384,6 +325,64 @@ class CustomerTransactionController extends Controller
         }
 
     }
+//==========================Officers Block=============================================
 
+    public function userblocked($email)
+    {
+        
+        //dd($email);
+        $update =  DB::table('customers')
+        ->where('email', $email)
+        ->update([
+            'transaction_status' => 'blocked',
+        ]);
+    
+        if ($update)
+        {
+            return back()->with('msg','User transaction Blocked') ;
+
+        }else{
+            return back()->with('msg','Database Problem') ;
+
+        }
+    }
+
+    public function userunblocked($email)
+    {
+        
+        //dd($email);
+        $update =  DB::table('customers')
+        ->where('email', $email)
+        ->update([
+            'transaction_status' => 'unblocked',
+        ]);
+    
+        if ($update)
+        {
+            return back()->with('msg','User transaction Unlocked') ;
+
+        }else{
+            return back()->with('msg','Database Problem') ;
+
+        }
+        
+    }
+
+    public function customer_transaction_details(Customerstransaction $id){
+        
+        $users= Customerstransaction::find($id); //change Officer to (Customer)->tablename
+
+        return view('pages.officer.customer.customer_transaction')->with('user', $users);
+    }
+
+    public function pdf($email){
+
+        $user = Customerstransaction::find($email); // Model Query
+
+        $pdf = PDF::loadView('pages.officer.pdf.customer_invoice',compact('user'));
+        return $pdf->stream('invoice.pdf');
+    }
+
+//==========================End Officer Block==========================================
 
 }

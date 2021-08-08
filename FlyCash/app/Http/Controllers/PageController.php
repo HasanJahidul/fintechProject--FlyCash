@@ -1,12 +1,6 @@
 <?php
 
 namespace App\Http\Controllers;
-use Illuminate\Http\Request;
-use App\Models\Customerstransaction;
-use App\Models\Customer;
-
-use Illuminate\Support\Facades\DB;
-use Illuminate\Support\Facades\File;
 
 class PageController extends Controller
 {
@@ -35,15 +29,9 @@ class PageController extends Controller
      *
      * @return \Illuminate\View\View
      */
-    public function transactionlist(Request $req)
+    public function transactionlist()
     {
-        $email=$req->session()->get('email');
-        // $transaction = Customerstransaction ::where('email',$email)
-        // ->all();
-        // $transaction = Customerstransaction ::find($email);
-        $transaction=Customerstransaction::all();
-        
-        return view('pages.customer.transactionlist')->with('transaction',$transaction);
+        return view('pages.customer.transactionlist');
     }
 
     /**

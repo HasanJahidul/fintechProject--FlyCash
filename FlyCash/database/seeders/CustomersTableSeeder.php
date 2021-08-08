@@ -23,7 +23,7 @@ class CustomersTableSeeder extends Seeder
             'balance' => '5000',
             'dob' => '11-1-1995',
             'type' => 'customer',
-            'transaction_status'=>'1',
+            'transaction_status'=>'blocked',
             'password' => '1234567',
             'created_at' => now(),
             'updated_at' => now()

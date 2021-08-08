@@ -59,7 +59,7 @@
                                 <h5 class="title">{{ $user->name }}</h5>
                             </a>
                             <p class="description">
-                                {{ __('User Profile') }}
+                                {{ __('Agent Profile') }}
                             </p>
                         </div>
                     </p>

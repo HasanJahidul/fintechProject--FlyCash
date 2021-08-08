@@ -4,38 +4,60 @@
   <div class="col-md-12">
     <div class="card ">
       <div class="card-header">
-        <h4 class="card-title"> Ongoing Campaign</h4>
+        <h4 class="card-title"> Remove Campaign</h4>
       </div>
       <div class="card-body">
         <div class="table-responsive">
           <table class="table tablesorter " id="">
             <thead class=" text-primary">
-            @if (session()->has('msg'))
-                        <div class="alert alert-success" role="alert">
-                            {{ session()->get('msg') }}
-                        </div>
-                    @endif
               <tr>
-                <th>
-                  Campaign id
-                </th>
                 <th>
                   Campaign Name
                 </th>
                 <th>
-                  Portfolio
+                  Released Date
                 </th>
                 <th>
+                  End Date
+                </th>
+                <th class="text-center">
                   Action
                 </th>
               </tr>
             </thead>
             <tbody>
-            @foreach ($campaigns as $campaign)
               <tr>
-                <th>{{ $campaign->id }}</th>
-                <th>{{ $campaign->title }}</th>
+                <td>
+                  Independence Day Campaign
+                </td>
+                <td>
+                  5/5/2021
+                </td>
+                <td>
+                15/5/2021
 
+<<<<<<< HEAD
+                </td>
+                <td class="text-center">
+                <button type="button">Remove</button>
+                </td>
+              </tr>
+              <tr>
+                <td>
+                  New Year Campaign
+                </td>
+                <td>
+                5/5/2021
+                </td>
+                <td>
+                5/5/2021
+                </td>
+                <td class="text-center">
+                <button type="button">Remove</button>
+                </td>
+              </tr>
+              
+=======
                 <th><img src="{{asset('black/img/campaigns/' . $campaign->image) }}" width="100px;" height="100px;" alt="image"></th>
                 <th>
 
@@ -46,6 +68,7 @@
               @endforeach
 
 
+>>>>>>> bd3f34329c35277c057c0a8768bc29c87d9f965e
             </tbody>
           </table>
         </div>

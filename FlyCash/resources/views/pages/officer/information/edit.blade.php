@@ -6,7 +6,6 @@
             <div class="card">
                 <div class="card-header">
                     <h3 class="title">{{ __('Information Data') }}</h3>
-                    <a href="{{route('information_index')}}">Back</a>
                 </div>
                 <form method="post"  autocomplete="off">
                     <div class="card-body">
@@ -25,20 +24,20 @@
                             </div>
 
                             <div class="form-group">
-                                <label>{{ __('NID') }}</label>
-                                <input type="text" name="nid" class="form-control" placeholder="{{ __('NID Number') }}" value="{{$user->nid}}">
+                                <label>{{ __('Amount') }}</label>
+                                <input type="text" name="amount" class="form-control" placeholder="{{ __('Amount') }}" value="{{$user->amount}}">
                                 @include('alerts.feedback', ['field' => 'nid'])
                             </div>
 
                             <div class="form-group">
-                                <label>{{ __('DOB') }}</label>
-                                <input type="text" name="dob" class="form-control" placeholder="{{ __('Date of Birth') }}" value="{{$user->dob}}">
+                                <label>{{ __('Balance') }}</label>
+                                <input type="text" name="balance" class="form-control" placeholder="{{ __('Balance') }}" value="{{$user->balance}}">
                                 @include('alerts.feedback', ['field' => 'nid'])
                             </div>
 
                             <div class="form-group">
-                                <label>{{ __('Type') }}</label>
-                                <input type="text" name="type" class="form-control" placeholder="{{ __('Type') }}" value="{{$user->type}}">
+                                <label>{{ __('Transactin Type') }}</label>
+                                <input type="text" name="type" class="form-control" placeholder="{{ __('Transaction Type') }}" value="{{$user->transaction_type}}">
                                 @include('alerts.feedback', ['field' => 'nid'])
                             </div>
                     </div>

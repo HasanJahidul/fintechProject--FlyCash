@@ -5,9 +5,9 @@
         <div class="col-md-8">
             <div class="card">
                 <div class="card-header">
-                    <h4 class="title">{{ __('Profile') }}</h4>
+                    <h3 class="title">{{ __('Communicatin Officer Profile') }}</h3>
                 </div>
-                <form method="post" action="#" enctype="multipart/form-data">
+                <form method="post" enctype="multipart/form-data">
                     <div class="card-body">
                         @csrf
 
@@ -60,6 +60,7 @@
                     </div>
                     <div class="card-footer">
                         <button type="submit" class="btn btn-fill btn-primary">{{ __('Save') }}</button>
+                        <a href="{{route('officer_home')}}" class="btn btn-success">Back</a>
                     </div>
                 </form>
             </div>
@@ -75,7 +76,7 @@
                             <div class="block block-three"></div>
                             <div class="block block-four"></div>
                             <a href="#">
-                                <img class="avatar" src="{{ asset('black') }}/img/hi.png" alt="">
+                                <img class="avatar" src="{{ asset('black') }}/img/officer/hi.png" alt="">
                                 <h5 class="title">{{ __('Profile') }}</h5>
                             </a>
                             <p class="description">

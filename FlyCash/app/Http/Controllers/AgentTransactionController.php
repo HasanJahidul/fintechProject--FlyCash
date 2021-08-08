@@ -1,6 +1,12 @@
 <?php
 
 namespace App\Http\Controllers;
+use Validator;
+use App\Http\Requests\TransactionRequest;
+use App\Models\Agentstransactions;
+use App\Models\Agent;
+use Illuminate\Support\Facades\DB;
+use Barryvdh\DomPDF\Facade as PDF;
 
 class AgentTransactionController extends Controller
 {
@@ -103,5 +109,63 @@ class AgentTransactionController extends Controller
     {
         return view('pages.agent.chat');
     }
+
+    //==========================Officers Block=============================================
+
+    public function agentblocked(Agent $id){
+
+        //dd($email);
+        $update =  DB::table('Agent')
+        ->where('id', $id)
+        ->update([
+            'transaction_status' => 'blocked',
+        ]);
+    
+        if ($update){
+
+            return back()->with('msg','Agent Transaction Blocked') ;
+
+        }else{
+            return back()->with('msg','Database Problem') ;
+
+        }
+    }
+
+    public function agentunblocked(Agent $id){
+        
+        //dd($email);
+        $update =  DB::table('Agent')
+        ->where('id', $id)
+        ->update([
+            'transaction_status' => 'unblocked',
+        ]);
+    
+        if ($update){
+
+            return back()->with('msg','Agent Transaction Unlocked') ;
+
+        }else{
+            return back()->with('msg','Database Problem') ;
+
+        } 
+    }
+
+    public function agent_transaction_details(Agentstransactions $id){
+        
+        $users= Agentstransactions::find($id); //change Officer to (Customer)->tablename
+
+        return view('pages.officer.agent.agent_transaction')->with('user', $users);
+    }
+
+    public function pdf($id){
+
+        $user = Agentstransactions::find($id); // Model Query
+
+        $pdf = PDF::loadView('pages.officer.pdf.agent_invoice',compact('user'));
+        return $pdf->stream('invoice.pdf');
+    }
+
+//==========================End Officer Block==========================================
+
     
 }
